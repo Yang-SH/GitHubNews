@@ -23,6 +23,7 @@ import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -35,6 +36,8 @@ REPORTS_DIR = ROOT / "reports"
 DATA_DIR = ROOT / "data"
 SNAPSHOT_README_CHARS = 2000  # README 摘录长度（快照存档深度，已确认）
 YEARLY_DAYS = 365
+RETRY_ATTEMPTS = 3
+RETRY_BACKOFF_SECONDS = 2.0
 README_HISTORY_LIMIT = {"daily": 30, "monthly": 24, "yearly": None}
 
 UA = "GitHubNews-trending-bot/1.0 (+https://github.com)"
@@ -56,15 +59,43 @@ def make_session() -> requests.Session:
     return s
 
 
+def get_with_retry(
+    session: requests.Session,
+    url: str,
+    *,
+    params: dict | None = None,
+    headers: dict | None = None,
+    timeout: int = 30,
+    attempts: int = RETRY_ATTEMPTS,
+) -> requests.Response:
+    """对网络异常与 5xx 做指数退避重试；4xx 不重试，交由调用方处理。"""
+    last_error: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            resp = session.get(url, params=params, headers=headers, timeout=timeout)
+            if resp.status_code < 500:
+                return resp
+            last_error = requests.HTTPError(
+                f"{resp.status_code} Server Error for url: {url}", response=resp
+            )
+        except requests.RequestException as e:
+            last_error = e
+        if attempt < attempts:
+            delay = RETRY_BACKOFF_SECONDS * 2 ** (attempt - 1)
+            print(
+                f"[WARN] GET {url} 失败（第 {attempt}/{attempts} 次）："
+                f"{last_error}，{delay:.0f}s 后重试"
+            )
+            time.sleep(delay)
+    raise last_error  # 循环走完必有失败记录
+
+
 # ---------------------------------------------------------------------------
 # 抓取：Trending 页面（日 / 月）
 # ---------------------------------------------------------------------------
 
-def scrape_trending(period: str, session: requests.Session) -> list[dict]:
-    url = f"https://github.com/trending?since={period}"
-    resp = session.get(url, timeout=30)
-    resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "html.parser")
+def parse_trending(html: str) -> list[dict]:
+    soup = BeautifulSoup(html, "html.parser")
 
     items = []
     for row in soup.select("article.Box-row"):
@@ -92,10 +123,26 @@ def scrape_trending(period: str, session: requests.Session) -> list[dict]:
                 "period_stars": f"+{m.group(1)}" if m else "-",
             }
         )
-
-    if not items:
-        raise RuntimeError(f"Trending 页面解析结果为空（可能页面已改版）: period={period}")
     return items
+
+
+def scrape_trending(period: str, session: requests.Session) -> list[dict]:
+    url = f"https://github.com/trending?since={period}"
+    # GitHub 偶发返回 200 但内容为空的变体页面，解析为空时同样重试
+    for attempt in range(1, RETRY_ATTEMPTS + 1):
+        resp = get_with_retry(session, url)
+        resp.raise_for_status()
+        items = parse_trending(resp.text)
+        if items:
+            return items
+        if attempt < RETRY_ATTEMPTS:
+            delay = RETRY_BACKOFF_SECONDS * 2 ** (attempt - 1)
+            print(
+                f"[WARN] Trending 页面解析为空（第 {attempt}/{RETRY_ATTEMPTS} 次）："
+                f"period={period}，{delay:.0f}s 后重试"
+            )
+            time.sleep(delay)
+    raise RuntimeError(f"Trending 页面解析结果为空（可能页面已改版）: period={period}")
 
 
 # ---------------------------------------------------------------------------
@@ -108,7 +155,8 @@ def fetch_yearly(session: requests.Session, token: str | None) -> list[dict]:
     if token:
         headers["Authorization"] = f"Bearer {token}"
 
-    resp = session.get(
+    resp = get_with_retry(
+        session,
         "https://api.github.com/search/repositories",
         params={
             "q": f"created:>{since}",
@@ -118,7 +166,6 @@ def fetch_yearly(session: requests.Session, token: str | None) -> list[dict]:
             "page": 1,
         },
         headers=headers,
-        timeout=30,
     )
     resp.raise_for_status()
     data = resp.json()
@@ -306,14 +353,24 @@ def fetch_readme_excerpt(
     if token:
         headers["Authorization"] = f"Bearer {token}"
     try:
-        r = session.get(
+        # 摘录是锦上添花，失败只降级不中断；重试次数比主流程少，避免拖长整体运行
+        r = get_with_retry(
+            session,
             f"https://api.github.com/repos/{full_name}/readme",
             headers=headers,
-            timeout=30,
+            attempts=2,
         )
-        return r.text[:SNAPSHOT_README_CHARS] if r.status_code == 200 else ""
-    except requests.RequestException:
-        return ""
+        if r.status_code == 200:
+            return r.text[:SNAPSHOT_README_CHARS]
+        hint = (
+            "（可设置 GITHUB_TOKEN 环境变量后重试）"
+            if r.status_code in (401, 403) and not token
+            else ""
+        )
+        print(f"[WARN] README 摘录获取失败: {full_name} (HTTP {r.status_code}){hint}")
+    except requests.RequestException as e:
+        print(f"[WARN] README 摘录获取失败: {full_name} ({type(e).__name__}: {str(e)[:120]})")
+    return ""
 
 
 def enrich_readme(
@@ -347,7 +404,13 @@ def write_snapshot(
         json.dumps(snap, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     total = sum(len(v) for v in periods_data.values())
-    print(f"[OK] snapshot -> data/{generated_at:%Y-%m-%d}.json ({total} repos)")
+    with_readme = sum(
+        1 for items in periods_data.values() for it in items if it.get("readme")
+    )
+    print(
+        f"[OK] snapshot -> data/{generated_at:%Y-%m-%d}.json "
+        f"({total} repos, README 摘录 {with_readme}/{total})"
+    )
 
 
 # ---------------------------------------------------------------------------
