@@ -15,6 +15,14 @@ Usage:
   python scripts/fetch_trending.py                # auto-detect by current date
   python scripts/fetch_trending.py --only daily   # force specific periods
 """
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "requests==2.34.2",
+#     "beautifulsoup4==4.15.0",
+# ]
+# ///
+# 注意：依赖版本需与 requirements.txt 保持一致
 
 from __future__ import annotations
 
@@ -194,21 +202,23 @@ def fetch_yearly(session: requests.Session, token: str | None) -> list[dict]:
 
 def group_by_lang(items: list[dict]) -> list[tuple[str, list[dict]]]:
     groups: dict[str, list[dict]] = {}
-    for it in items:
+    first_pos: dict[str, int] = {}
+    for i, it in enumerate(items):
         groups.setdefault(it["lang"], []).append(it)
-    # 语言按组内最高排名排序（即保持榜单上的出现顺序）
-    return sorted(groups.items(), key=lambda kv: items.index(kv[1][0]))
+        first_pos.setdefault(it["lang"], i)
+    # 语言按其在总榜中的首次出现位置排序
+    return sorted(groups.items(), key=lambda kv: first_pos[kv[0]])
 
 
 def render_table(rows: list[list[str]]) -> list[str]:
     header = "| # | 仓库 | 描述 | 语言 | 总 Star | 周期增长 |"
     sep = "|---|------|------|------|---------|----------|"
     lines = [header, sep]
-    for i, (name, url, desc, lang, stars, extra) in enumerate(rows, 1):
+    for rank, name, url, desc, lang, stars, extra in rows:
         desc = desc.replace("|", "\\|")
         if len(desc) > 80:
             desc = desc[:77] + "..."
-        lines.append(f"| {i} | [{name}]({url}) | {desc} | {lang} | {stars} | {extra} |")
+        lines.append(f"| {rank} | [{name}]({url}) | {desc} | {lang} | {stars} | {extra} |")
     return lines
 
 
@@ -218,47 +228,43 @@ def render_report(
     meta: dict,
     generated_at: datetime,
 ) -> str:
-    date_str = generated_at.strftime("%Y-%m-%d")
+    date_str = (
+        generated_at.strftime("%Y-%m") if kind == "monthly" else generated_at.strftime("%Y-%m-%d")
+    )
     title = f"GitHub {meta['title']}热点 — {date_str}"
+    global_rank = {it["name"]: i for i, it in enumerate(items, 1)}
 
     lines = [
         f"# {title}",
         "",
-        f"> 数据来源：{meta['source']} ｜ 抓取时间：{generated_at.strftime('%Y-%m-%d %H:%M')}（北京时间）",
+        f"> 数据来源：{meta['source']} ｜ 抓取时间：{generated_at.strftime('%Y-%m-%d %H:%M')}"
+        f"（北京时间）｜ 表中 # 为总榜排名",
         "",
     ]
 
     for lang, group in group_by_lang(items):
         lines.append(f"## {lang}")
         lines.append("")
-        if kind == "yearly":
-            rows = [
-                [it["name"], it["url"], it["desc"], it["lang"], it["stars"], it["created"]]
-                for it in group
-            ]
-        else:
-            rows = [
-                [it["name"], it["url"], it["desc"], it["lang"], it["stars"], it["period_stars"]]
-                for it in group
-            ]
+        rows = [
+            [global_rank[it["name"]], it["name"], it["url"], it["desc"], it["lang"],
+             it["stars"], it["period_stars"]]
+            for it in group
+        ]
         lines.extend(render_table(rows))
         lines.append("")
 
     return "\n".join(lines)
 
 
-YEARLY_HEADER_OVERRIDE = ("| # | 仓库 | 描述 | 语言 | 总 Star | 创建日期 |",
-                          "|---|------|------|------|---------|----------|")
-
-
 def render_report_yearly(items: list[dict], generated_at: datetime) -> str:
     since = (generated_at - timedelta(days=YEARLY_DAYS)).strftime("%Y-%m-%d")
+    global_rank = {it["name"]: i for i, it in enumerate(items, 1)}
     lines = [
         f"# GitHub 年度热点 — {generated_at.year}",
         "",
         f"> 数据来源：[GitHub Search API](https://api.github.com/search/repositories) ｜ "
         f"口径：{since} 之后创建且 Star 数最高的新项目 Top 25 ｜ "
-        f"生成时间：{generated_at.strftime('%Y-%m-%d %H:%M')}（北京时间）",
+        f"生成时间：{generated_at.strftime('%Y-%m-%d %H:%M')}（北京时间）｜ 表中 # 为总榜排名",
         "",
     ]
     for lang, group in group_by_lang(items):
@@ -266,13 +272,13 @@ def render_report_yearly(items: list[dict], generated_at: datetime) -> str:
         lines.append("")
         lines.append("| # | 仓库 | 描述 | 语言 | 总 Star | 创建日期 |")
         lines.append("|---|------|------|------|---------|----------|")
-        for i, it in enumerate(group, 1):
+        for it in group:
             desc = it["desc"].replace("|", "\\|")
             if len(desc) > 80:
                 desc = desc[:77] + "..."
             lines.append(
-                f"| {i} | [{it['name']}]({it['url']}) | {desc} | {it['lang']} "
-                f"| {it['stars']} | {it['created']} |"
+                f"| {global_rank[it['name']]} | [{it['name']}]({it['url']}) | {desc} "
+                f"| {it['lang']} | {it['stars']} | {it['created']} |"
             )
         lines.append("")
     return "\n".join(lines)
@@ -291,14 +297,24 @@ def report_links(kind: str) -> list[tuple[str, Path]]:
     return [(f.stem, f) for f in files[:limit]] if limit else [(f.stem, f) for f in files]
 
 
-def update_readme(generated_at: datetime) -> None:
-    kind_titles = {
-        "daily": ("日报", "每天 08:00（北京时间）"),
-        "monthly": ("月报", "每月 1 日随日报一并生成"),
-        "yearly": ("年报", "每年 1 月 1 日生成（近一年创建且 Star 最高的新项目 Top 25）"),
-    }
+def analysis_links() -> list[tuple[str, Path]]:
+    """analysis/ 下的分析报告（排除 README 与 _ 开头的辅助文件），按文件名倒序。"""
+    base = ROOT / "analysis"
+    if not base.exists():
+        return []
+    files = sorted(
+        (p for p in base.glob("*.md") if p.name != "README.md" and not p.name.startswith("_")),
+        reverse=True,
+    )
+    return [(p.stem, p) for p in files]
 
-    lines = [
+
+REPORTS_MARKER = ("<!-- reports:index:start -->", "<!-- reports:index:end -->")
+ANALYSIS_MARKER = ("<!-- analysis:index:start -->", "<!-- analysis:index:end -->")
+
+
+def render_intro() -> list[str]:
+    return [
         "# GitHubNews — GitHub 热点项目追踪",
         "",
         "由 GitHub Actions 每日定时抓取 GitHub 热点项目，自动提交榜单报告（`reports/`）与数据快照（`data/`，含 README 摘录）；本地 agent 基于快照生成问题与场景分析，产出 `analysis/` 下的分析报告（人工审核后入库）。",
@@ -308,36 +324,83 @@ def update_readme(generated_at: datetime) -> None:
         "| 日报 | 每天 08:00（北京时间） | [GitHub Trending](https://github.com/trending) 官方口径（daily） |",
         "| 月报 | 每月 1 日 | GitHub Trending 官方口径（monthly） |",
         "| 年报 | 每年 1 月 1 日 | Search API：近一年创建且 Star 最高的新项目 Top 25 |",
-        "",
-        "## 最新报告",
-        "",
+        "| 分析 | 持续更新 | 基于 `data/` 快照的问题与场景分析（人工审核入库） |",
     ]
 
+
+def render_reports_index() -> list[str]:
+    kind_titles = {"daily": "日报", "monthly": "月报", "yearly": "年报"}
+    lines = ["## 最新报告", ""]
     for kind in ("daily", "monthly", "yearly"):
-        title, _ = kind_titles[kind]
         links = report_links(kind)
         if links:
             stem, path = links[0]
-            rel = path.relative_to(ROOT).as_posix()
-            lines.append(f"- **{title}**：[{stem}]({rel})")
+            lines.append(f"- **{kind_titles[kind]}**：[{stem}]({path.relative_to(ROOT).as_posix()})")
         else:
-            lines.append(f"- **{title}**：暂无")
-
+            lines.append(f"- **{kind_titles[kind]}**：暂无")
     lines += ["", "## 历史报告", ""]
     for kind in ("daily", "monthly", "yearly"):
-        title, _ = kind_titles[kind]
-        lines.append(f"### {title}（最新在前）")
+        lines.append(f"### {kind_titles[kind]}（最新在前）")
         lines.append("")
         links = report_links(kind)
         if links:
-            for stem, path in links:
-                rel = path.relative_to(ROOT).as_posix()
-                lines.append(f"- [{stem}]({rel})")
+            lines.extend(
+                f"- [{stem}]({path.relative_to(ROOT).as_posix()})" for stem, path in links
+            )
         else:
             lines.append("- 暂无")
         lines.append("")
+    return lines
 
-    (ROOT / "README.md").write_text("\n".join(lines), encoding="utf-8")
+
+def render_analysis_index() -> list[str]:
+    links = analysis_links()
+    lines = ["## 项目分析", ""]
+    if links:
+        lines.extend(f"- [{stem}]({path.relative_to(ROOT).as_posix()})" for stem, path in links)
+    else:
+        lines.append(
+            "暂无。基于每日快照的分析经人工审核入库后，会自动列在这里；"
+            "流程与模板见 [analysis/README.md](analysis/README.md)。"
+        )
+    return lines
+
+
+def _splice_block(lines: list[str], start: str, end: str, block: list[str]) -> bool:
+    try:
+        i = lines.index(start)
+        j = lines.index(end, i + 1)
+    except ValueError:
+        return False
+    lines[i + 1 : j] = block
+    return True
+
+
+def update_readme(generated_at: datetime) -> None:
+    """只更新标记区块内的报告/分析索引；区块外的内容（如手写的开发说明）原样保留。"""
+    readme = ROOT / "README.md"
+    existing = readme.read_text(encoding="utf-8") if readme.exists() else ""
+
+    if existing:
+        lines = existing.rstrip("\n").split("\n")
+        ok_reports = _splice_block(lines, *REPORTS_MARKER, render_reports_index())
+        ok_analysis = _splice_block(lines, *ANALYSIS_MARKER, render_analysis_index())
+        if ok_reports and ok_analysis:
+            readme.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            return
+
+    # 首次生成或标记缺失时整体重建
+    lines = (
+        render_intro()
+        + [""]
+        + [REPORTS_MARKER[0]]
+        + render_reports_index()
+        + [REPORTS_MARKER[1], ""]
+        + [ANALYSIS_MARKER[0]]
+        + render_analysis_index()
+        + [ANALYSIS_MARKER[1], ""]
+    )
+    readme.write_text("\n".join(lines), encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------

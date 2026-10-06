@@ -20,13 +20,17 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 完整历史，保证失败重试场景下 git pull --rebase 可用
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: pip
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4
+        run: pip install -r requirements.txt
 
       - name: Fetch trending and generate reports
         env:
@@ -43,5 +47,22 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: update trending reports $(date -u +'%Y-%m-%d')"
+            # 运行期间若有手动推送，先 rebase 再推，避免当天报告丢失
+            git pull --rebase origin main
             git push
           fi
+
+      - name: Notify on failure
+        if: failure()
+        env:
+          WEBHOOK_URL: ${{ secrets.NOTIFY_WEBHOOK_URL }}
+        run: |
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "NOTIFY_WEBHOOK_URL 未设置，跳过通知。"
+            exit 0
+          fi
+          # 适配企业微信/钉钉机器人的 text 消息格式；其他渠道请自行调整 payload
+          curl -sf -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "{\"msgtype\":\"text\",\"text\":{\"content\":\"GitHubNews trending 报告生成失败，请检查 Actions 日志（$(date -u +'%F %TZ')）\"}}" \
+            || echo "通知发送失败（不影响主流程判断）。"

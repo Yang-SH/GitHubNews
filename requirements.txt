@@ -1,0 +1,3 @@
+# 运行时依赖，版本需与 scripts/fetch_trending.py 头部的 PEP 723 元数据保持一致
+requests==2.34.2
+beautifulsoup4==4.15.0
