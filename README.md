@@ -35,7 +35,11 @@
 <!-- analysis:index:start -->
 ## 项目分析
 
-暂无。基于每日快照的分析经人工审核入库后，会自动列在这里；流程与模板见 [analysis/README.md](analysis/README.md)。
+- [2026-10-06-skills](analysis/2026-10-06-skills.md)
+- [2026-10-06-rea](analysis/2026-10-06-rea.md)
+- [2026-10-06-e2e](analysis/2026-10-06-e2e.md)
+- [2026-10-06-DeepGEMM](analysis/2026-10-06-DeepGEMM.md)
+- [2026-10-06-claude-mem](analysis/2026-10-06-claude-mem.md)
 <!-- analysis:index:end -->
 
 ## 开发
