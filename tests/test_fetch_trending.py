@@ -30,15 +30,21 @@ class FakeResp:
 
 
 class FakeSession:
-    """按顺序回放响应；响应位置也可以放异常对象。"""
+    """按顺序回放响应；响应位置也可以放异常对象。耗尽后若给出 default 则重复返回。"""
 
-    def __init__(self, *responses):
+    def __init__(self, *responses, default=None):
         self.responses = list(responses)
+        self.default = default
         self.calls = 0
 
     def get(self, url, params=None, headers=None, timeout=None):
         self.calls += 1
-        r = self.responses.pop(0)
+        if self.responses:
+            r = self.responses.pop(0)
+        elif self.default is not None:
+            r = self.default
+        else:
+            raise AssertionError("no more fake responses")
         if isinstance(r, Exception):
             raise r
         return r
@@ -129,8 +135,10 @@ def test_scrape_trending_503_recovers_via_retry():
 # 年报（Search API）
 # ---------------------------------------------------------------------------
 
-def test_fetch_yearly_retry_and_fields():
-    s = FakeSession(FakeResp(503), FakeResp(json_data=VALID_API))
+def test_fetch_yearly_retry_and_fields(monkeypatch):
+    monkeypatch.setattr(ft, "YEARLY_ATTEMPTS", 1)
+    monkeypatch.setattr(ft, "YEARLY_PAGES", 1)
+    s = FakeSession(FakeResp(503), default=FakeResp(json_data=VALID_API))
     items = ft.fetch_yearly(s, None)
     assert s.calls == 2
     assert items == [{
@@ -149,6 +157,70 @@ def test_fetch_yearly_uses_token_header():
 
     ft.fetch_yearly(S(), "tok-123")
     assert captured["headers"]["Authorization"] == "Bearer tok-123"
+
+
+def _fake_api_page(n, star_base=1000):
+    return {"items": [
+        {"full_name": f"r{i}", "html_url": f"https://github.com/r{i}", "description": f"d{i}",
+         "language": "Python", "stargazers_count": star_base - i,
+         "created_at": "2026-01-01T00:00:00Z"}
+        for i in range(n)
+    ]}
+
+
+def test_fetch_yearly_merges_pages_dedupes_and_sorts_locally(monkeypatch):
+    monkeypatch.setattr(ft, "YEARLY_ATTEMPTS", 1)
+    page1 = _fake_api_page(100)  # r0..r99，Star 1000..901
+    page2 = {"items": [
+        {**page1["items"][0], "stargazers_count": 2000, "full_name": "r200",
+         "html_url": "https://github.com/r200"},  # 第二页出现更高 Star 的新仓库
+        {**page1["items"][5], "stargazers_count": 5},  # 重复仓库（更低数值），应去重保留先见值
+    ]}
+    s = FakeSession(FakeResp(json_data=page1), FakeResp(json_data=page2))
+    items = ft.fetch_yearly(s, None)
+    assert s.calls == 2
+    assert len(items) == 25
+    assert items[0]["name"] == "r200" and items[0]["stars"] == "2,000"
+    assert items[1]["name"] == "r0"
+    assert sum(1 for it in items if it["name"] == "r5") == 1
+    assert all("_stars" not in it for it in items)
+
+
+def test_fetch_yearly_unions_across_attempts(monkeypatch):
+    # 不同轮次命中不同索引副本：合并后应取到两轮里 Star 最高的仓库
+    monkeypatch.setattr(ft, "YEARLY_ATTEMPTS", 2)
+    monkeypatch.setattr(ft, "YEARLY_PAGES", 1)
+    s = FakeSession(
+        FakeResp(json_data={"items": [
+            {"full_name": "a/one", "html_url": "u", "description": "", "language": "Go",
+             "stargazers_count": 100, "created_at": "2026-01-01T00:00:00Z"},
+            {"full_name": "b/two", "html_url": "u", "description": "", "language": "Go",
+             "stargazers_count": 50, "created_at": "2026-01-01T00:00:00Z"},
+        ]}),
+        FakeResp(json_data={"items": [
+            {"full_name": "c/three", "html_url": "u", "description": "", "language": "Go",
+             "stargazers_count": 200, "created_at": "2026-01-01T00:00:00Z"},
+        ]}),
+    )
+    items = ft.fetch_yearly(s, None)
+    assert s.calls == 2
+    assert [it["name"] for it in items] == ["c/three", "a/one", "b/two"]
+    assert items[0]["stars"] == "200"
+
+
+def test_fetch_yearly_second_page_failure_degrades(monkeypatch):
+    monkeypatch.setattr(ft, "YEARLY_ATTEMPTS", 1)
+    s = FakeSession(FakeResp(json_data=_fake_api_page(100)), FakeResp(404))
+    items = ft.fetch_yearly(s, None)
+    assert s.calls == 2  # 第二页失败不拖垮整份年报
+    assert len(items) == 25 and items[0]["stars"] == "1,000"
+
+
+def test_fetch_yearly_first_page_failure_raises():
+    s = FakeSession(FakeResp(503), FakeResp(502), FakeResp(500))
+    with pytest.raises(requests.HTTPError):
+        ft.fetch_yearly(s, None)
+    assert s.calls == 3
 
 
 # ---------------------------------------------------------------------------

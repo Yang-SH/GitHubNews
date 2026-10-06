@@ -44,6 +44,9 @@ REPORTS_DIR = ROOT / "reports"
 DATA_DIR = ROOT / "data"
 SNAPSHOT_README_CHARS = 2000  # README 摘录长度（快照存档深度，已确认）
 YEARLY_DAYS = 365
+YEARLY_PER_PAGE = 100
+YEARLY_PAGES = 2
+YEARLY_ATTEMPTS = 3
 RETRY_ATTEMPTS = 3
 RETRY_BACKOFF_SECONDS = 2.0
 README_HISTORY_LIMIT = {"daily": 30, "monthly": 24, "yearly": None}
@@ -157,43 +160,62 @@ def scrape_trending(period: str, session: requests.Session) -> list[dict]:
 # 抓取：年度（Search API，近一年创建且 Star 最高）
 # ---------------------------------------------------------------------------
 
+def _merge_candidate(candidates: dict[str, dict], repo: dict) -> None:
+    """合并候选仓库；同一仓库多次命中时保留 Star 更高的一份（副本间数值有新旧）。"""
+    count = repo.get("stargazers_count", 0)
+    cur = candidates.get(repo["full_name"])
+    if cur is None or count > cur["_stars"]:
+        candidates[repo["full_name"]] = {
+            "name": repo["full_name"],
+            "url": repo["html_url"],
+            "desc": (repo.get("description") or "").strip(),
+            "lang": repo.get("language") or "其他",
+            "stars": f"{count:,}",
+            "created": repo.get("created_at", "")[:10],
+            "_stars": count,
+        }
+
+
 def fetch_yearly(session: requests.Session, token: str | None) -> list[dict]:
     since = (now_bj() - timedelta(days=YEARLY_DAYS)).date().isoformat()
     headers = {"Accept": "application/vnd.github+json"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
 
-    resp = get_with_retry(
-        session,
-        "https://api.github.com/search/repositories",
-        params={
-            "q": f"created:>{since}",
-            "sort": "stars",
-            "order": "desc",
-            "per_page": 25,
-            "page": 1,
-        },
-        headers=headers,
-    )
-    resp.raise_for_status()
-    data = resp.json()
+    # Search API 排序结果在不同索引副本间波动明显（同查询间隔几分钟的返回集
+    # 可能完全不同），单次查询的 Top 25 偶然性大；多轮独立采样合并去重后
+    # 本地按 Star 重排，覆盖率和稳定性都显著更好
+    candidates: dict[str, dict] = {}
+    for attempt in range(1, YEARLY_ATTEMPTS + 1):
+        try:
+            for page in range(1, YEARLY_PAGES + 1):
+                resp = get_with_retry(
+                    session, "https://api.github.com/search/repositories",
+                    params={
+                        "q": f"created:>{since}",
+                        "sort": "stars",
+                        "order": "desc",
+                        "per_page": YEARLY_PER_PAGE,
+                        "page": page,
+                    },
+                    headers=headers,
+                )
+                resp.raise_for_status()
+                for repo in resp.json().get("items", []):
+                    _merge_candidate(candidates, repo)
+        except requests.RequestException as e:
+            if not candidates:
+                raise
+            # 首轮已有候选时，后续轮次失败只降级，不拖垮整份年报
+            print(f"[WARN] 年报候选池第 {attempt} 轮获取失败，用已有候选继续: {e}")
+            break
 
-    items = []
-    for repo in data.get("items", []):
-        items.append(
-            {
-                "name": repo["full_name"],
-                "url": repo["html_url"],
-                "desc": (repo.get("description") or "").strip(),
-                "lang": repo.get("language") or "其他",
-                "stars": f"{repo.get('stargazers_count', 0):,}",
-                "created": repo.get("created_at", "")[:10],
-            }
-        )
-
-    if not items:
+    ranked = sorted(candidates.values(), key=lambda it: it["_stars"], reverse=True)[:25]
+    for it in ranked:
+        del it["_stars"]
+    if not ranked:
         raise RuntimeError("Search API 返回结果为空")
-    return items
+    return ranked
 
 
 # ---------------------------------------------------------------------------
@@ -264,7 +286,8 @@ def render_report_yearly(items: list[dict], generated_at: datetime) -> str:
         "",
         f"> 数据来源：[GitHub Search API](https://api.github.com/search/repositories) ｜ "
         f"口径：{since} 之后创建且 Star 数最高的新项目 Top 25 ｜ "
-        f"生成时间：{generated_at.strftime('%Y-%m-%d %H:%M')}（北京时间）｜ 表中 # 为总榜排名",
+        f"生成时间：{generated_at.strftime('%Y-%m-%d %H:%M')}（北京时间）｜ 表中 # 为总榜排名"
+        f"（Search API 索引存在波动，榜单为查询时点快照）",
         "",
     ]
     for lang, group in group_by_lang(items):
