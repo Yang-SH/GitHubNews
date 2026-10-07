@@ -49,6 +49,9 @@ YEARLY_PAGES = 2
 YEARLY_ATTEMPTS = 3
 RETRY_ATTEMPTS = 3
 RETRY_BACKOFF_SECONDS = 2.0
+TRENDING_PAGES = 4  # 每页 25 条 × 4 页 ≈ Top 100。2026-10 实测官方页面只返回
+# 12 条且忽略 page 参数（后续页与第 1 页重复，会被下方的去重逻辑自动截住），
+# 保留翻页逻辑以兼容官方恢复分页的情况
 README_HISTORY_LIMIT = {"daily": 30, "monthly": 24, "yearly": None}
 
 UA = "GitHubNews-trending-bot/1.0 (+https://github.com)"
@@ -138,22 +141,52 @@ def parse_trending(html: str) -> list[dict]:
 
 
 def scrape_trending(period: str, session: requests.Session) -> list[dict]:
-    url = f"https://github.com/trending?since={period}"
-    # GitHub 偶发返回 200 但内容为空的变体页面，解析为空时同样重试
-    for attempt in range(1, RETRY_ATTEMPTS + 1):
-        resp = get_with_retry(session, url)
-        resp.raise_for_status()
-        items = parse_trending(resp.text)
-        if items:
-            return items
-        if attempt < RETRY_ATTEMPTS:
-            delay = RETRY_BACKOFF_SECONDS * 2 ** (attempt - 1)
-            print(
-                f"[WARN] Trending 页面解析为空（第 {attempt}/{RETRY_ATTEMPTS} 次）："
-                f"period={period}，{delay:.0f}s 后重试"
-            )
-            time.sleep(delay)
-    raise RuntimeError(f"Trending 页面解析结果为空（可能页面已改版）: period={period}")
+    """抓取 Trending 榜单前 TRENDING_PAGES 页（≈ Top 100），按出现顺序去重合并。
+
+    第 1 页为必需（解析为空会重试/报错）；后续页 best-effort：404、解析为空
+    或整页与前文重复，都视为榜单不足一整页，正常结束。
+    """
+    items: dict[str, dict] = {}
+    for page in range(1, TRENDING_PAGES + 1):
+        url = f"https://github.com/trending?since={period}"
+        if page > 1:
+            url += f"&page={page}"
+
+        if page == 1:
+            # GitHub 偶发返回 200 但内容为空的变体页面，解析为空时重新抓取重试
+            page_items = []
+            for attempt in range(1, RETRY_ATTEMPTS + 1):
+                resp = get_with_retry(session, url)
+                resp.raise_for_status()
+                page_items = parse_trending(resp.text)
+                if page_items:
+                    break
+                if attempt < RETRY_ATTEMPTS:
+                    delay = RETRY_BACKOFF_SECONDS * 2 ** (attempt - 1)
+                    print(
+                        f"[WARN] Trending 页面解析为空（第 {attempt}/{RETRY_ATTEMPTS} 次）："
+                        f"period={period}，{delay:.0f}s 后重试"
+                    )
+                    time.sleep(delay)
+            if not page_items:
+                raise RuntimeError(
+                    f"Trending 页面解析结果为空（可能页面已改版）: period={period}"
+                )
+        else:
+            resp = get_with_retry(session, url)
+            if resp.status_code == 404:
+                break
+            resp.raise_for_status()
+            page_items = parse_trending(resp.text)
+            if not page_items:
+                break
+
+        before = len(items)
+        for it in page_items:
+            items.setdefault(it["name"], it)
+        if page > 1 and len(items) == before:
+            break
+    return list(items.values())
 
 
 # ---------------------------------------------------------------------------
@@ -344,10 +377,11 @@ def render_intro() -> list[str]:
         "",
         "| 报告 | 生成频率 | 口径 |",
         "|------|----------|------|",
-        "| 日报 | 每天 06:30（北京时间） | [GitHub Trending](https://github.com/trending) 官方口径（daily） |",
+        "| 日报 | 每天 06:30（北京时间） | [GitHub Trending](https://github.com/trending) 官方口径（daily，2026-10 起官方页面每日仅 12 条） |",
         "| 月报 | 每月 1 日 | GitHub Trending 官方口径（monthly） |",
         "| 年报 | 每年 1 月 1 日 | Search API：近一年创建且 Star 最高的新项目 Top 25 |",
         "| 分析 | 持续更新 | 基于 `data/` 快照的问题与场景分析（人工审核入库） |",
+        "| 历史回填 | 一次性 | GH Archive WatchEvent：每日新增 Star Top 100（2025-01-01 ~ 2026-03-31，见 `analysis/README.md`） |",
     ]
 
 

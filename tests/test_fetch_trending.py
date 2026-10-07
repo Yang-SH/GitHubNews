@@ -108,7 +108,7 @@ def test_get_with_retry_network_error_then_success():
 # ---------------------------------------------------------------------------
 
 def test_scrape_trending_parses_fields():
-    s = FakeSession(FakeResp(text=VALID_TRENDING))
+    s = FakeSession(FakeResp(text=VALID_TRENDING), default=FakeResp(404))
     items = ft.scrape_trending("daily", s)
     assert items[0] == {
         "name": "foo/bar", "url": "https://github.com/foo/bar",
@@ -126,9 +126,33 @@ def test_scrape_trending_empty_page_retries_then_raises():
 
 
 def test_scrape_trending_503_recovers_via_retry():
-    s = FakeSession(FakeResp(503), FakeResp(503), FakeResp(text=VALID_TRENDING))
+    s = FakeSession(FakeResp(503), FakeResp(503), FakeResp(text=VALID_TRENDING),
+                    default=FakeResp(404))
     assert len(ft.scrape_trending("daily", s)) == 2
+    assert s.calls == 4  # 第 1 页重试 3 次 + 第 2 页 404 停止
+
+
+def test_scrape_trending_merges_pages_until_404():
+    page2 = """
+    <article class="Box-row">
+      <h2><a href="/quux/corge"> quux/corge </a></h2>
+      <p>third desc</p>
+      <span itemprop="programmingLanguage">Go</span>
+      <a href="/quux/corge/stargazers">900</a>
+      <span>300 stars today</span>
+    </article>
+    """
+    s = FakeSession(FakeResp(text=VALID_TRENDING), FakeResp(text=page2), FakeResp(404))
+    items = ft.scrape_trending("daily", s)
+    assert [it["name"] for it in items] == ["foo/bar", "baz/qux", "quux/corge"]
     assert s.calls == 3
+
+
+def test_scrape_trending_stops_on_repeated_page():
+    # 第 2 页整页与第 1 页重复（榜单不足一整页），不无限抓取
+    s = FakeSession(FakeResp(text=VALID_TRENDING), default=FakeResp(text=VALID_TRENDING))
+    assert len(ft.scrape_trending("daily", s)) == 2
+    assert s.calls == 2
 
 
 # ---------------------------------------------------------------------------
