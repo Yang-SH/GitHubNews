@@ -4,7 +4,7 @@
 
 | 报告 | 生成频率 | 口径 |
 |------|----------|------|
-| 日报 | 每天 08:00（北京时间） | [GitHub Trending](https://github.com/trending) 官方口径（daily） |
+| 日报 | 每天 06:30（北京时间） | [GitHub Trending](https://github.com/trending) 官方口径（daily） |
 | 月报 | 每月 1 日 | GitHub Trending 官方口径（monthly） |
 | 年报 | 每年 1 月 1 日 | Search API：近一年创建且 Star 最高的新项目 Top 25 |
 | 分析 | 持续更新 | 基于 `data/` 快照的问题与场景分析（人工审核入库） |
