@@ -1,0 +1,908 @@
+{
+  "date": "2025-06-05",
+  "fetched_at": "2026-10-07T19:34:30.346562+08:00",
+  "source": "gharchive-watchevent",
+  "quality": "good",
+  "daily": [
+    {
+      "rank": 1,
+      "name": "google-gemini/gemini-fullstack-langgraph-quickstart",
+      "url": "https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart",
+      "desc": "",
+      "lang": "",
+      "stars": "4,361",
+      "period_stars": "+1,332"
+    },
+    {
+      "rank": 2,
+      "name": "IRS-Public/direct-file",
+      "url": "https://github.com/IRS-Public/direct-file",
+      "desc": "",
+      "lang": "",
+      "stars": "1,707",
+      "period_stars": "+611"
+    },
+    {
+      "rank": 3,
+      "name": "onlook-dev/onlook",
+      "url": "https://github.com/onlook-dev/onlook",
+      "desc": "",
+      "lang": "",
+      "stars": "11,656",
+      "period_stars": "+578"
+    },
+    {
+      "rank": 4,
+      "name": "Anduin2017/HowToCook",
+      "url": "https://github.com/Anduin2017/HowToCook",
+      "desc": "",
+      "lang": "",
+      "stars": "85,279",
+      "period_stars": "+393"
+    },
+    {
+      "rank": 5,
+      "name": "iamgio/quarkdown",
+      "url": "https://github.com/iamgio/quarkdown",
+      "desc": "",
+      "lang": "",
+      "stars": "2,474",
+      "period_stars": "+380"
+    },
+    {
+      "rank": 6,
+      "name": "TapXWorld/ChinaTextbook",
+      "url": "https://github.com/TapXWorld/ChinaTextbook",
+      "desc": "",
+      "lang": "",
+      "stars": "30,156",
+      "period_stars": "+366"
+    },
+    {
+      "rank": 7,
+      "name": "langflow-ai/langflow",
+      "url": "https://github.com/langflow-ai/langflow",
+      "desc": "",
+      "lang": "",
+      "stars": "51,958",
+      "period_stars": "+281"
+    },
+    {
+      "rank": 8,
+      "name": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "desc": "",
+      "lang": "",
+      "stars": "99,205",
+      "period_stars": "+272"
+    },
+    {
+      "rank": 9,
+      "name": "VERT-sh/VERT",
+      "url": "https://github.com/VERT-sh/VERT",
+      "desc": "",
+      "lang": "",
+      "stars": "3,503",
+      "period_stars": "+264"
+    },
+    {
+      "rank": 10,
+      "name": "codecrafters-io/build-your-own-x",
+      "url": "https://github.com/codecrafters-io/build-your-own-x",
+      "desc": "",
+      "lang": "",
+      "stars": "247,417",
+      "period_stars": "+247"
+    },
+    {
+      "rank": 11,
+      "name": "topoteretes/cognee",
+      "url": "https://github.com/topoteretes/cognee",
+      "desc": "",
+      "lang": "",
+      "stars": "2,275",
+      "period_stars": "+243"
+    },
+    {
+      "rank": 12,
+      "name": "datawhalechina/happy-llm",
+      "url": "https://github.com/datawhalechina/happy-llm",
+      "desc": "",
+      "lang": "",
+      "stars": "1,041",
+      "period_stars": "+222"
+    },
+    {
+      "rank": 13,
+      "name": "scrapy/scrapy",
+      "url": "https://github.com/scrapy/scrapy",
+      "desc": "",
+      "lang": "",
+      "stars": "62,118",
+      "period_stars": "+214"
+    },
+    {
+      "rank": 14,
+      "name": "frdel/agent-zero",
+      "url": "https://github.com/frdel/agent-zero",
+      "desc": "",
+      "lang": "",
+      "stars": "7,778",
+      "period_stars": "+197"
+    },
+    {
+      "rank": 15,
+      "name": "unslothai/notebooks",
+      "url": "https://github.com/unslothai/notebooks",
+      "desc": "",
+      "lang": "",
+      "stars": "670",
+      "period_stars": "+194"
+    },
+    {
+      "rank": 16,
+      "name": "donnemartin/system-design-primer",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "desc": "",
+      "lang": "",
+      "stars": "317,118",
+      "period_stars": "+188"
+    },
+    {
+      "rank": 17,
+      "name": "google-ai-edge/gallery",
+      "url": "https://github.com/google-ai-edge/gallery",
+      "desc": "",
+      "lang": "",
+      "stars": "5,606",
+      "period_stars": "+184"
+    },
+    {
+      "rank": 18,
+      "name": "anthropics/prompt-eng-interactive-tutorial",
+      "url": "https://github.com/anthropics/prompt-eng-interactive-tutorial",
+      "desc": "",
+      "lang": "",
+      "stars": "7,024",
+      "period_stars": "+182"
+    },
+    {
+      "rank": 19,
+      "name": "practical-tutorials/project-based-learning",
+      "url": "https://github.com/practical-tutorials/project-based-learning",
+      "desc": "",
+      "lang": "",
+      "stars": "179,080",
+      "period_stars": "+181"
+    },
+    {
+      "rank": 20,
+      "name": "Fosowl/agenticSeek",
+      "url": "https://github.com/Fosowl/agenticSeek",
+      "desc": "",
+      "lang": "",
+      "stars": "10,775",
+      "period_stars": "+180"
+    },
+    {
+      "rank": 21,
+      "name": "DigitalPlatDev/FreeDomain",
+      "url": "https://github.com/DigitalPlatDev/FreeDomain",
+      "desc": "",
+      "lang": "",
+      "stars": "62,514",
+      "period_stars": "+176"
+    },
+    {
+      "rank": 22,
+      "name": "l-portet/tiktok-warmup-bot",
+      "url": "https://github.com/l-portet/tiktok-warmup-bot",
+      "desc": "",
+      "lang": "",
+      "stars": "173",
+      "period_stars": "+173"
+    },
+    {
+      "rank": 23,
+      "name": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "desc": "",
+      "lang": "",
+      "stars": "45,464",
+      "period_stars": "+171"
+    },
+    {
+      "rank": 24,
+      "name": "jwasham/coding-interview-university",
+      "url": "https://github.com/jwasham/coding-interview-university",
+      "desc": "",
+      "lang": "",
+      "stars": "313,496",
+      "period_stars": "+163"
+    },
+    {
+      "rank": 25,
+      "name": "punkpeye/awesome-mcp-servers",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "desc": "",
+      "lang": "",
+      "stars": "47,766",
+      "period_stars": "+157"
+    },
+    {
+      "rank": 26,
+      "name": "block/goose",
+      "url": "https://github.com/block/goose",
+      "desc": "",
+      "lang": "",
+      "stars": "12,437",
+      "period_stars": "+155"
+    },
+    {
+      "rank": 27,
+      "name": "dagger/container-use",
+      "url": "https://github.com/dagger/container-use",
+      "desc": "",
+      "lang": "",
+      "stars": "147",
+      "period_stars": "+147"
+    },
+    {
+      "rank": 28,
+      "name": "hugomd/parrot.live",
+      "url": "https://github.com/hugomd/parrot.live",
+      "desc": "",
+      "lang": "",
+      "stars": "4,004",
+      "period_stars": "+143"
+    },
+    {
+      "rank": 29,
+      "name": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "desc": "",
+      "lang": "",
+      "stars": "45,843",
+      "period_stars": "+140"
+    },
+    {
+      "rank": 30,
+      "name": "nautechsystems/nautilus_trader",
+      "url": "https://github.com/nautechsystems/nautilus_trader",
+      "desc": "",
+      "lang": "",
+      "stars": "6,804",
+      "period_stars": "+139"
+    },
+    {
+      "rank": 31,
+      "name": "mlabonne/llm-course",
+      "url": "https://github.com/mlabonne/llm-course",
+      "desc": "",
+      "lang": "",
+      "stars": "52,124",
+      "period_stars": "+138"
+    },
+    {
+      "rank": 32,
+      "name": "upstash/context7",
+      "url": "https://github.com/upstash/context7",
+      "desc": "",
+      "lang": "",
+      "stars": "8,768",
+      "period_stars": "+138"
+    },
+    {
+      "rank": 33,
+      "name": "codexu/note-gen",
+      "url": "https://github.com/codexu/note-gen",
+      "desc": "",
+      "lang": "",
+      "stars": "2,591",
+      "period_stars": "+134"
+    },
+    {
+      "rank": 34,
+      "name": "public-apis/public-apis",
+      "url": "https://github.com/public-apis/public-apis",
+      "desc": "",
+      "lang": "",
+      "stars": "307,123",
+      "period_stars": "+133"
+    },
+    {
+      "rank": 35,
+      "name": "kamranahmedse/developer-roadmap",
+      "url": "https://github.com/kamranahmedse/developer-roadmap",
+      "desc": "",
+      "lang": "",
+      "stars": "349,303",
+      "period_stars": "+129"
+    },
+    {
+      "rank": 36,
+      "name": "deepsense-ai/ragbits",
+      "url": "https://github.com/deepsense-ai/ragbits",
+      "desc": "",
+      "lang": "",
+      "stars": "313",
+      "period_stars": "+125"
+    },
+    {
+      "rank": 37,
+      "name": "Olow304/memvid",
+      "url": "https://github.com/Olow304/memvid",
+      "desc": "",
+      "lang": "",
+      "stars": "637",
+      "period_stars": "+124"
+    },
+    {
+      "rank": 38,
+      "name": "DavidHDev/react-bits",
+      "url": "https://github.com/DavidHDev/react-bits",
+      "desc": "",
+      "lang": "",
+      "stars": "11,214",
+      "period_stars": "+121"
+    },
+    {
+      "rank": 39,
+      "name": "Agnik-git/Flow3-Network-Bot",
+      "url": "https://github.com/Agnik-git/Flow3-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "141",
+      "period_stars": "+119"
+    },
+    {
+      "rank": 40,
+      "name": "521xueweihan/HelloGitHub",
+      "url": "https://github.com/521xueweihan/HelloGitHub",
+      "desc": "",
+      "lang": "",
+      "stars": "120,999",
+      "period_stars": "+115"
+    },
+    {
+      "rank": 41,
+      "name": "Agnik-git/Exeos-Network-Bot",
+      "url": "https://github.com/Agnik-git/Exeos-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "131",
+      "period_stars": "+115"
+    },
+    {
+      "rank": 42,
+      "name": "Graveyard-Gravestones/KiteAI-Bot",
+      "url": "https://github.com/Graveyard-Gravestones/KiteAI-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "136",
+      "period_stars": "+114"
+    },
+    {
+      "rank": 43,
+      "name": "Graveyard-Gravestones/MyGate-Network-Bot",
+      "url": "https://github.com/Graveyard-Gravestones/MyGate-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "132",
+      "period_stars": "+112"
+    },
+    {
+      "rank": 44,
+      "name": "Yondz77/Coresky-Network",
+      "url": "https://github.com/Yondz77/Coresky-Network",
+      "desc": "",
+      "lang": "",
+      "stars": "135",
+      "period_stars": "+112"
+    },
+    {
+      "rank": 45,
+      "name": "resemble-ai/chatterbox",
+      "url": "https://github.com/resemble-ai/chatterbox",
+      "desc": "",
+      "lang": "",
+      "stars": "3,476",
+      "period_stars": "+112"
+    },
+    {
+      "rank": 46,
+      "name": "SharanMC/Opensea-Bot",
+      "url": "https://github.com/SharanMC/Opensea-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "128",
+      "period_stars": "+109"
+    },
+    {
+      "rank": 47,
+      "name": "yeongpin/cursor-free-vip",
+      "url": "https://github.com/yeongpin/cursor-free-vip",
+      "desc": "",
+      "lang": "",
+      "stars": "26,665",
+      "period_stars": "+105"
+    },
+    {
+      "rank": 48,
+      "name": "Graveyard-Gravestones/Gradient-Network-Bot",
+      "url": "https://github.com/Graveyard-Gravestones/Gradient-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "123",
+      "period_stars": "+104"
+    },
+    {
+      "rank": 49,
+      "name": "Graveyard-Gravestones/SparkChain-Network-Bot",
+      "url": "https://github.com/Graveyard-Gravestones/SparkChain-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "124",
+      "period_stars": "+102"
+    },
+    {
+      "rank": 50,
+      "name": "Yondz77/Depined-Network-bot",
+      "url": "https://github.com/Yondz77/Depined-Network-bot",
+      "desc": "",
+      "lang": "",
+      "stars": "120",
+      "period_stars": "+102"
+    },
+    {
+      "rank": 51,
+      "name": "openai/codex",
+      "url": "https://github.com/openai/codex",
+      "desc": "",
+      "lang": "",
+      "stars": "24,953",
+      "period_stars": "+102"
+    },
+    {
+      "rank": 52,
+      "name": "gitroomhq/postiz-app",
+      "url": "https://github.com/gitroomhq/postiz-app",
+      "desc": "",
+      "lang": "",
+      "stars": "17,234",
+      "period_stars": "+101"
+    },
+    {
+      "rank": 53,
+      "name": "happi/theBeamBook",
+      "url": "https://github.com/happi/theBeamBook",
+      "desc": "",
+      "lang": "",
+      "stars": "3,834",
+      "period_stars": "+101"
+    },
+    {
+      "rank": 54,
+      "name": "Lebogang-tech/3DOS-Network-Bot",
+      "url": "https://github.com/Lebogang-tech/3DOS-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "121",
+      "period_stars": "+100"
+    },
+    {
+      "rank": 55,
+      "name": "SharanMC/Grass-Bot",
+      "url": "https://github.com/SharanMC/Grass-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "119",
+      "period_stars": "+100"
+    },
+    {
+      "rank": 56,
+      "name": "break-into-data/ai-engineer-toolkit",
+      "url": "https://github.com/break-into-data/ai-engineer-toolkit",
+      "desc": "",
+      "lang": "",
+      "stars": "1,323",
+      "period_stars": "+99"
+    },
+    {
+      "rank": 57,
+      "name": "sindresorhus/awesome",
+      "url": "https://github.com/sindresorhus/awesome",
+      "desc": "",
+      "lang": "",
+      "stars": "402,012",
+      "period_stars": "+99"
+    },
+    {
+      "rank": 58,
+      "name": "Graveyard-Gravestones/Gata-Network-Bot",
+      "url": "https://github.com/Graveyard-Gravestones/Gata-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "123",
+      "period_stars": "+98"
+    },
+    {
+      "rank": 59,
+      "name": "SharanMC/Camp-Network-Bot",
+      "url": "https://github.com/SharanMC/Camp-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "121",
+      "period_stars": "+97"
+    },
+    {
+      "rank": 60,
+      "name": "trimstray/the-book-of-secret-knowledge",
+      "url": "https://github.com/trimstray/the-book-of-secret-knowledge",
+      "desc": "",
+      "lang": "",
+      "stars": "177,966",
+      "period_stars": "+97"
+    },
+    {
+      "rank": 61,
+      "name": "Thirdsuu/Stork_Bot",
+      "url": "https://github.com/Thirdsuu/Stork_Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "186",
+      "period_stars": "+96"
+    },
+    {
+      "rank": 62,
+      "name": "monkeyman1172/Cryptalk-Auto-Bot",
+      "url": "https://github.com/monkeyman1172/Cryptalk-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "142",
+      "period_stars": "+96"
+    },
+    {
+      "rank": 63,
+      "name": "opencode-ai/opencode",
+      "url": "https://github.com/opencode-ai/opencode",
+      "desc": "",
+      "lang": "",
+      "stars": "3,026",
+      "period_stars": "+96"
+    },
+    {
+      "rank": 64,
+      "name": "anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code",
+      "desc": "",
+      "lang": "",
+      "stars": "9,606",
+      "period_stars": "+95"
+    },
+    {
+      "rank": 65,
+      "name": "Graveyard-Gravestones/Openledger-Network-Bot",
+      "url": "https://github.com/Graveyard-Gravestones/Openledger-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "113",
+      "period_stars": "+94"
+    },
+    {
+      "rank": 66,
+      "name": "artemio12123/Cryplex-Auto-Bot",
+      "url": "https://github.com/artemio12123/Cryplex-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "144",
+      "period_stars": "+94"
+    },
+    {
+      "rank": 67,
+      "name": "microsoft/ai-agents-for-beginners",
+      "url": "https://github.com/microsoft/ai-agents-for-beginners",
+      "desc": "",
+      "lang": "",
+      "stars": "21,285",
+      "period_stars": "+91"
+    },
+    {
+      "rank": 68,
+      "name": "professorric/Meganet-Auto-Bot",
+      "url": "https://github.com/professorric/Meganet-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "139",
+      "period_stars": "+91"
+    },
+    {
+      "rank": 69,
+      "name": "mamut3131/0G-Storage-Auto-Bot",
+      "url": "https://github.com/mamut3131/0G-Storage-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "145",
+      "period_stars": "+90"
+    },
+    {
+      "rank": 70,
+      "name": "mamut3131/Aveum-Network-Mining-Bot",
+      "url": "https://github.com/mamut3131/Aveum-Network-Mining-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "135",
+      "period_stars": "+90"
+    },
+    {
+      "rank": 71,
+      "name": "artemio12123/ByData-Auto-Bot",
+      "url": "https://github.com/artemio12123/ByData-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "135",
+      "period_stars": "+89"
+    },
+    {
+      "rank": 72,
+      "name": "kanbn/kan",
+      "url": "https://github.com/kanbn/kan",
+      "desc": "",
+      "lang": "",
+      "stars": "1,116",
+      "period_stars": "+89"
+    },
+    {
+      "rank": 73,
+      "name": "langgenius/dify",
+      "url": "https://github.com/langgenius/dify",
+      "desc": "",
+      "lang": "",
+      "stars": "97,550",
+      "period_stars": "+89"
+    },
+    {
+      "rank": 74,
+      "name": "clansagg/Flow3-Auto-Task-Bot",
+      "url": "https://github.com/clansagg/Flow3-Auto-Task-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "133",
+      "period_stars": "+88"
+    },
+    {
+      "rank": 75,
+      "name": "clansagg/Gata-Auto-Bot",
+      "url": "https://github.com/clansagg/Gata-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "138",
+      "period_stars": "+88"
+    },
+    {
+      "rank": 76,
+      "name": "Xandaozinh/Huddle01-Auto-Bot",
+      "url": "https://github.com/Xandaozinh/Huddle01-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "135",
+      "period_stars": "+86"
+    },
+    {
+      "rank": 77,
+      "name": "clash-verge-rev/clash-verge-rev",
+      "url": "https://github.com/clash-verge-rev/clash-verge-rev",
+      "desc": "",
+      "lang": "",
+      "stars": "58,260",
+      "period_stars": "+86"
+    },
+    {
+      "rank": 78,
+      "name": "bytedance/deer-flow",
+      "url": "https://github.com/bytedance/deer-flow",
+      "desc": "",
+      "lang": "",
+      "stars": "11,661",
+      "period_stars": "+84"
+    },
+    {
+      "rank": 79,
+      "name": "HAHYBHSHUHAI/Polyflow-Auto-Bot",
+      "url": "https://github.com/HAHYBHSHUHAI/Polyflow-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "129",
+      "period_stars": "+83"
+    },
+    {
+      "rank": 80,
+      "name": "Xandaozinh/HiPin-Auto-Bot",
+      "url": "https://github.com/Xandaozinh/HiPin-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "125",
+      "period_stars": "+83"
+    },
+    {
+      "rank": 81,
+      "name": "rybbit-io/rybbit",
+      "url": "https://github.com/rybbit-io/rybbit",
+      "desc": "",
+      "lang": "",
+      "stars": "5,543",
+      "period_stars": "+83"
+    },
+    {
+      "rank": 82,
+      "name": "arsLan4k1390/Cherrygram",
+      "url": "https://github.com/arsLan4k1390/Cherrygram",
+      "desc": "",
+      "lang": "",
+      "stars": "1,633",
+      "period_stars": "+82"
+    },
+    {
+      "rank": 83,
+      "name": "hyperdxio/hyperdx",
+      "url": "https://github.com/hyperdxio/hyperdx",
+      "desc": "",
+      "lang": "",
+      "stars": "7,677",
+      "period_stars": "+82"
+    },
+    {
+      "rank": 84,
+      "name": "professorric/Layer-Edge-Auto-Bot",
+      "url": "https://github.com/professorric/Layer-Edge-Auto-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "131",
+      "period_stars": "+82"
+    },
+    {
+      "rank": 85,
+      "name": "ruanyf/weekly",
+      "url": "https://github.com/ruanyf/weekly",
+      "desc": "",
+      "lang": "",
+      "stars": "68,019",
+      "period_stars": "+82"
+    },
+    {
+      "rank": 86,
+      "name": "syncthing/syncthing",
+      "url": "https://github.com/syncthing/syncthing",
+      "desc": "",
+      "lang": "",
+      "stars": "72,333",
+      "period_stars": "+82"
+    },
+    {
+      "rank": 87,
+      "name": "virattt/ai-hedge-fund",
+      "url": "https://github.com/virattt/ai-hedge-fund",
+      "desc": "",
+      "lang": "",
+      "stars": "31,849",
+      "period_stars": "+82"
+    },
+    {
+      "rank": 88,
+      "name": "ArduPilot/ardupilot",
+      "url": "https://github.com/ArduPilot/ardupilot",
+      "desc": "",
+      "lang": "",
+      "stars": "11,410",
+      "period_stars": "+81"
+    },
+    {
+      "rank": 89,
+      "name": "RealKai42/qwerty-learner",
+      "url": "https://github.com/RealKai42/qwerty-learner",
+      "desc": "",
+      "lang": "",
+      "stars": "6,419",
+      "period_stars": "+81"
+    },
+    {
+      "rank": 90,
+      "name": "eyaltoledano/claude-task-master",
+      "url": "https://github.com/eyaltoledano/claude-task-master",
+      "desc": "",
+      "lang": "",
+      "stars": "10,072",
+      "period_stars": "+81"
+    },
+    {
+      "rank": 91,
+      "name": "unionlabs/union",
+      "url": "https://github.com/unionlabs/union",
+      "desc": "",
+      "lang": "",
+      "stars": "71,831",
+      "period_stars": "+81"
+    },
+    {
+      "rank": 92,
+      "name": "11cafe/jaaz",
+      "url": "https://github.com/11cafe/jaaz",
+      "desc": "",
+      "lang": "",
+      "stars": "136",
+      "period_stars": "+80"
+    },
+    {
+      "rank": 93,
+      "name": "Capixabao/SockTrader-Bot",
+      "url": "https://github.com/Capixabao/SockTrader-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "389",
+      "period_stars": "+80"
+    },
+    {
+      "rank": 94,
+      "name": "lastmile-ai/mcp-agent",
+      "url": "https://github.com/lastmile-ai/mcp-agent",
+      "desc": "",
+      "lang": "",
+      "stars": "4,463",
+      "period_stars": "+80"
+    },
+    {
+      "rank": 95,
+      "name": "ammar122-web/Gradient-Network-Bot",
+      "url": "https://github.com/ammar122-web/Gradient-Network-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "432",
+      "period_stars": "+79"
+    },
+    {
+      "rank": 96,
+      "name": "massgravel/Microsoft-Activation-Scripts",
+      "url": "https://github.com/massgravel/Microsoft-Activation-Scripts",
+      "desc": "",
+      "lang": "",
+      "stars": "135,946",
+      "period_stars": "+79"
+    },
+    {
+      "rank": 97,
+      "name": "Capixabao/getgrass-miner-bot",
+      "url": "https://github.com/Capixabao/getgrass-miner-bot",
+      "desc": "",
+      "lang": "",
+      "stars": "399",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 98,
+      "name": "HAHYBHSHUHAI/Parasail-Node-Bot",
+      "url": "https://github.com/HAHYBHSHUHAI/Parasail-Node-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "117",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 99,
+      "name": "anthropics/courses",
+      "url": "https://github.com/anthropics/courses",
+      "desc": "",
+      "lang": "",
+      "stars": "12,678",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 100,
+      "name": "astral-sh/uv",
+      "url": "https://github.com/astral-sh/uv",
+      "desc": "",
+      "lang": "",
+      "stars": "53,187",
+      "period_stars": "+78"
+    }
+  ]
+}

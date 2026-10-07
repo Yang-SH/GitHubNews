@@ -1,0 +1,908 @@
+{
+  "date": "2025-10-20",
+  "fetched_at": "2026-10-07T19:34:30.346562+08:00",
+  "source": "gharchive-watchevent",
+  "quality": "good",
+  "daily": [
+    {
+      "rank": 1,
+      "name": "deepseek-ai/DeepSeek-OCR",
+      "url": "https://github.com/deepseek-ai/DeepSeek-OCR",
+      "desc": "",
+      "lang": "",
+      "stars": "1,102",
+      "period_stars": "+1,102"
+    },
+    {
+      "rank": 2,
+      "name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "desc": "",
+      "lang": "",
+      "stars": "4,105",
+      "period_stars": "+987"
+    },
+    {
+      "rank": 3,
+      "name": "anthropics/claude-cookbooks",
+      "url": "https://github.com/anthropics/claude-cookbooks",
+      "desc": "",
+      "lang": "",
+      "stars": "1,469",
+      "period_stars": "+500"
+    },
+    {
+      "rank": 4,
+      "name": "karpathy/nanochat",
+      "url": "https://github.com/karpathy/nanochat",
+      "desc": "",
+      "lang": "",
+      "stars": "5,949",
+      "period_stars": "+480"
+    },
+    {
+      "rank": 5,
+      "name": "GAIR-NLP/SII-CLI",
+      "url": "https://github.com/GAIR-NLP/SII-CLI",
+      "desc": "",
+      "lang": "",
+      "stars": "332",
+      "period_stars": "+329"
+    },
+    {
+      "rank": 6,
+      "name": "PaddlePaddle/PaddleOCR",
+      "url": "https://github.com/PaddlePaddle/PaddleOCR",
+      "desc": "",
+      "lang": "",
+      "stars": "56,309",
+      "period_stars": "+229"
+    },
+    {
+      "rank": 7,
+      "name": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit",
+      "desc": "",
+      "lang": "",
+      "stars": "19,053",
+      "period_stars": "+220"
+    },
+    {
+      "rank": 8,
+      "name": "mountain-loop/yaak",
+      "url": "https://github.com/mountain-loop/yaak",
+      "desc": "",
+      "lang": "",
+      "stars": "5,210",
+      "period_stars": "+208"
+    },
+    {
+      "rank": 9,
+      "name": "jingyaogong/minimind",
+      "url": "https://github.com/jingyaogong/minimind",
+      "desc": "",
+      "lang": "",
+      "stars": "24,790",
+      "period_stars": "+200"
+    },
+    {
+      "rank": 10,
+      "name": "EbookFoundation/free-programming-books",
+      "url": "https://github.com/EbookFoundation/free-programming-books",
+      "desc": "",
+      "lang": "",
+      "stars": "307,164",
+      "period_stars": "+193"
+    },
+    {
+      "rank": 11,
+      "name": "lfnovo/open-notebook",
+      "url": "https://github.com/lfnovo/open-notebook",
+      "desc": "",
+      "lang": "",
+      "stars": "3,819",
+      "period_stars": "+190"
+    },
+    {
+      "rank": 12,
+      "name": "DrewThomasson/ebook2audiobook",
+      "url": "https://github.com/DrewThomasson/ebook2audiobook",
+      "desc": "",
+      "lang": "",
+      "stars": "10,067",
+      "period_stars": "+146"
+    },
+    {
+      "rank": 13,
+      "name": "yusufkaraaslan/Skill_Seekers",
+      "url": "https://github.com/yusufkaraaslan/Skill_Seekers",
+      "desc": "",
+      "lang": "",
+      "stars": "558",
+      "period_stars": "+135"
+    },
+    {
+      "rank": 14,
+      "name": "coyer1986/awesome-project-7461",
+      "url": "https://github.com/coyer1986/awesome-project-7461",
+      "desc": "",
+      "lang": "",
+      "stars": "134",
+      "period_stars": "+134"
+    },
+    {
+      "rank": 15,
+      "name": "coyer1986/notes-app-7725",
+      "url": "https://github.com/coyer1986/notes-app-7725",
+      "desc": "",
+      "lang": "",
+      "stars": "135",
+      "period_stars": "+133"
+    },
+    {
+      "rank": 16,
+      "name": "coyer1986/weather-app-1739",
+      "url": "https://github.com/coyer1986/weather-app-1739",
+      "desc": "",
+      "lang": "",
+      "stars": "133",
+      "period_stars": "+133"
+    },
+    {
+      "rank": 17,
+      "name": "codecrafters-io/build-your-own-x",
+      "url": "https://github.com/codecrafters-io/build-your-own-x",
+      "desc": "",
+      "lang": "",
+      "stars": "273,843",
+      "period_stars": "+132"
+    },
+    {
+      "rank": 18,
+      "name": "coyer1986/python-weather-api",
+      "url": "https://github.com/coyer1986/python-weather-api",
+      "desc": "",
+      "lang": "",
+      "stars": "132",
+      "period_stars": "+132"
+    },
+    {
+      "rank": 19,
+      "name": "DigitalPlatDev/FreeDomain",
+      "url": "https://github.com/DigitalPlatDev/FreeDomain",
+      "desc": "",
+      "lang": "",
+      "stars": "94,819",
+      "period_stars": "+131"
+    },
+    {
+      "rank": 20,
+      "name": "coyer1986/crm-platform-3773",
+      "url": "https://github.com/coyer1986/crm-platform-3773",
+      "desc": "",
+      "lang": "",
+      "stars": "130",
+      "period_stars": "+129"
+    },
+    {
+      "rank": 21,
+      "name": "coyer1986/blog-platform-6331",
+      "url": "https://github.com/coyer1986/blog-platform-6331",
+      "desc": "",
+      "lang": "",
+      "stars": "128",
+      "period_stars": "+127"
+    },
+    {
+      "rank": 22,
+      "name": "coyer1986/automation-tool-1608",
+      "url": "https://github.com/coyer1986/automation-tool-1608",
+      "desc": "",
+      "lang": "",
+      "stars": "126",
+      "period_stars": "+126"
+    },
+    {
+      "rank": 23,
+      "name": "coyer1986/inventory-system-3814",
+      "url": "https://github.com/coyer1986/inventory-system-3814",
+      "desc": "",
+      "lang": "",
+      "stars": "126",
+      "period_stars": "+126"
+    },
+    {
+      "rank": 24,
+      "name": "coyer1986/task-manager-7754",
+      "url": "https://github.com/coyer1986/task-manager-7754",
+      "desc": "",
+      "lang": "",
+      "stars": "127",
+      "period_stars": "+126"
+    },
+    {
+      "rank": 25,
+      "name": "coyer1986/clever-forge-586",
+      "url": "https://github.com/coyer1986/clever-forge-586",
+      "desc": "",
+      "lang": "",
+      "stars": "127",
+      "period_stars": "+125"
+    },
+    {
+      "rank": 26,
+      "name": "coyer1986/silent-quark-930",
+      "url": "https://github.com/coyer1986/silent-quark-930",
+      "desc": "",
+      "lang": "",
+      "stars": "125",
+      "period_stars": "+125"
+    },
+    {
+      "rank": 27,
+      "name": "coyer1986/frosty-engine-202",
+      "url": "https://github.com/coyer1986/frosty-engine-202",
+      "desc": "",
+      "lang": "",
+      "stars": "125",
+      "period_stars": "+124"
+    },
+    {
+      "rank": 28,
+      "name": "coyer1986/ml-model-4948",
+      "url": "https://github.com/coyer1986/ml-model-4948",
+      "desc": "",
+      "lang": "",
+      "stars": "125",
+      "period_stars": "+124"
+    },
+    {
+      "rank": 29,
+      "name": "coyer1986/notes-app-8933",
+      "url": "https://github.com/coyer1986/notes-app-8933",
+      "desc": "",
+      "lang": "",
+      "stars": "125",
+      "period_stars": "+124"
+    },
+    {
+      "rank": 30,
+      "name": "coyer1986/silent-pulse-108",
+      "url": "https://github.com/coyer1986/silent-pulse-108",
+      "desc": "",
+      "lang": "",
+      "stars": "124",
+      "period_stars": "+124"
+    },
+    {
+      "rank": 31,
+      "name": "coyer1986/activity-history",
+      "url": "https://github.com/coyer1986/activity-history",
+      "desc": "",
+      "lang": "",
+      "stars": "124",
+      "period_stars": "+123"
+    },
+    {
+      "rank": 32,
+      "name": "coyer1986/ecommerce-shop-5066",
+      "url": "https://github.com/coyer1986/ecommerce-shop-5066",
+      "desc": "",
+      "lang": "",
+      "stars": "124",
+      "period_stars": "+123"
+    },
+    {
+      "rank": 33,
+      "name": "coyer1986/booking-app-8862",
+      "url": "https://github.com/coyer1986/booking-app-8862",
+      "desc": "",
+      "lang": "",
+      "stars": "123",
+      "period_stars": "+122"
+    },
+    {
+      "rank": 34,
+      "name": "coyer1986/chat-app-9234",
+      "url": "https://github.com/coyer1986/chat-app-9234",
+      "desc": "",
+      "lang": "",
+      "stars": "121",
+      "period_stars": "+121"
+    },
+    {
+      "rank": 35,
+      "name": "coyer1986/cms-system-8700",
+      "url": "https://github.com/coyer1986/cms-system-8700",
+      "desc": "",
+      "lang": "",
+      "stars": "122",
+      "period_stars": "+121"
+    },
+    {
+      "rank": 36,
+      "name": "coyer1986/react-todo-app",
+      "url": "https://github.com/coyer1986/react-todo-app",
+      "desc": "",
+      "lang": "",
+      "stars": "121",
+      "period_stars": "+121"
+    },
+    {
+      "rank": 37,
+      "name": "coyer1986/automation-tool-8275",
+      "url": "https://github.com/coyer1986/automation-tool-8275",
+      "desc": "",
+      "lang": "",
+      "stars": "120",
+      "period_stars": "+120"
+    },
+    {
+      "rank": 38,
+      "name": "coyer1986/chat-app-2478",
+      "url": "https://github.com/coyer1986/chat-app-2478",
+      "desc": "",
+      "lang": "",
+      "stars": "120",
+      "period_stars": "+120"
+    },
+    {
+      "rank": 39,
+      "name": "coyer1986/mobile-app-4401",
+      "url": "https://github.com/coyer1986/mobile-app-4401",
+      "desc": "",
+      "lang": "",
+      "stars": "120",
+      "period_stars": "+119"
+    },
+    {
+      "rank": 40,
+      "name": "coyer1986/portfolio-site-7571",
+      "url": "https://github.com/coyer1986/portfolio-site-7571",
+      "desc": "",
+      "lang": "",
+      "stars": "122",
+      "period_stars": "+119"
+    },
+    {
+      "rank": 41,
+      "name": "coyer1986/cms-system-3141",
+      "url": "https://github.com/coyer1986/cms-system-3141",
+      "desc": "",
+      "lang": "",
+      "stars": "118",
+      "period_stars": "+118"
+    },
+    {
+      "rank": 42,
+      "name": "coyer1986/inventory-system-7857",
+      "url": "https://github.com/coyer1986/inventory-system-7857",
+      "desc": "",
+      "lang": "",
+      "stars": "119",
+      "period_stars": "+118"
+    },
+    {
+      "rank": 43,
+      "name": "coyer1986/rapid-cipher-819",
+      "url": "https://github.com/coyer1986/rapid-cipher-819",
+      "desc": "",
+      "lang": "",
+      "stars": "119",
+      "period_stars": "+118"
+    },
+    {
+      "rank": 44,
+      "name": "coyer1986/task-manager-4120",
+      "url": "https://github.com/coyer1986/task-manager-4120",
+      "desc": "",
+      "lang": "",
+      "stars": "118",
+      "period_stars": "+118"
+    },
+    {
+      "rank": 45,
+      "name": "coyer1986/automation-tool-6262",
+      "url": "https://github.com/coyer1986/automation-tool-6262",
+      "desc": "",
+      "lang": "",
+      "stars": "117",
+      "period_stars": "+116"
+    },
+    {
+      "rank": 46,
+      "name": "coyer1986/cms-system-4135",
+      "url": "https://github.com/coyer1986/cms-system-4135",
+      "desc": "",
+      "lang": "",
+      "stars": "117",
+      "period_stars": "+116"
+    },
+    {
+      "rank": 47,
+      "name": "coyer1986/cms-system-5245",
+      "url": "https://github.com/coyer1986/cms-system-5245",
+      "desc": "",
+      "lang": "",
+      "stars": "115",
+      "period_stars": "+115"
+    },
+    {
+      "rank": 48,
+      "name": "coyer1986/coyer1986",
+      "url": "https://github.com/coyer1986/coyer1986",
+      "desc": "",
+      "lang": "",
+      "stars": "115",
+      "period_stars": "+115"
+    },
+    {
+      "rank": 49,
+      "name": "coyer1986/go-web-server",
+      "url": "https://github.com/coyer1986/go-web-server",
+      "desc": "",
+      "lang": "",
+      "stars": "119",
+      "period_stars": "+115"
+    },
+    {
+      "rank": 50,
+      "name": "coyer1986/weather-app-5869",
+      "url": "https://github.com/coyer1986/weather-app-5869",
+      "desc": "",
+      "lang": "",
+      "stars": "115",
+      "period_stars": "+115"
+    },
+    {
+      "rank": 51,
+      "name": "coyer1986/clever-marble-821",
+      "url": "https://github.com/coyer1986/clever-marble-821",
+      "desc": "",
+      "lang": "",
+      "stars": "117",
+      "period_stars": "+114"
+    },
+    {
+      "rank": 52,
+      "name": "coyer1986/stoic-engine-25",
+      "url": "https://github.com/coyer1986/stoic-engine-25",
+      "desc": "",
+      "lang": "",
+      "stars": "114",
+      "period_stars": "+114"
+    },
+    {
+      "rank": 53,
+      "name": "coyer1986/chat-app-3140",
+      "url": "https://github.com/coyer1986/chat-app-3140",
+      "desc": "",
+      "lang": "",
+      "stars": "113",
+      "period_stars": "+113"
+    },
+    {
+      "rank": 54,
+      "name": "coyer1986/ecommerce-shop-1991",
+      "url": "https://github.com/coyer1986/ecommerce-shop-1991",
+      "desc": "",
+      "lang": "",
+      "stars": "114",
+      "period_stars": "+113"
+    },
+    {
+      "rank": 55,
+      "name": "coyer1986/task-manager-6036",
+      "url": "https://github.com/coyer1986/task-manager-6036",
+      "desc": "",
+      "lang": "",
+      "stars": "114",
+      "period_stars": "+113"
+    },
+    {
+      "rank": 56,
+      "name": "coyer1986/mobile-app-6849",
+      "url": "https://github.com/coyer1986/mobile-app-6849",
+      "desc": "",
+      "lang": "",
+      "stars": "112",
+      "period_stars": "+112"
+    },
+    {
+      "rank": 57,
+      "name": "zama-ai/fhevm",
+      "url": "https://github.com/zama-ai/fhevm",
+      "desc": "",
+      "lang": "",
+      "stars": "14,931",
+      "period_stars": "+112"
+    },
+    {
+      "rank": 58,
+      "name": "coyer1986/crimson-atlas-860",
+      "url": "https://github.com/coyer1986/crimson-atlas-860",
+      "desc": "",
+      "lang": "",
+      "stars": "114",
+      "period_stars": "+111"
+    },
+    {
+      "rank": 59,
+      "name": "coyer1986/ecommerce-shop-1505",
+      "url": "https://github.com/coyer1986/ecommerce-shop-1505",
+      "desc": "",
+      "lang": "",
+      "stars": "111",
+      "period_stars": "+111"
+    },
+    {
+      "rank": 60,
+      "name": "coyer1986/gentle-pulse-281",
+      "url": "https://github.com/coyer1986/gentle-pulse-281",
+      "desc": "",
+      "lang": "",
+      "stars": "114",
+      "period_stars": "+111"
+    },
+    {
+      "rank": 61,
+      "name": "servo/servo",
+      "url": "https://github.com/servo/servo",
+      "desc": "",
+      "lang": "",
+      "stars": "32,593",
+      "period_stars": "+111"
+    },
+    {
+      "rank": 62,
+      "name": "coyer1986/inventory-system-4724",
+      "url": "https://github.com/coyer1986/inventory-system-4724",
+      "desc": "",
+      "lang": "",
+      "stars": "111",
+      "period_stars": "+110"
+    },
+    {
+      "rank": 63,
+      "name": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "desc": "",
+      "lang": "",
+      "stars": "125,621",
+      "period_stars": "+110"
+    },
+    {
+      "rank": 64,
+      "name": "coyer1986/crimson-haven-292",
+      "url": "https://github.com/coyer1986/crimson-haven-292",
+      "desc": "",
+      "lang": "",
+      "stars": "112",
+      "period_stars": "+108"
+    },
+    {
+      "rank": 65,
+      "name": "Fission-AI/OpenSpec",
+      "url": "https://github.com/Fission-AI/OpenSpec",
+      "desc": "",
+      "lang": "",
+      "stars": "1,234",
+      "period_stars": "+107"
+    },
+    {
+      "rank": 66,
+      "name": "coyer1986/ecommerce-shop-7537",
+      "url": "https://github.com/coyer1986/ecommerce-shop-7537",
+      "desc": "",
+      "lang": "",
+      "stars": "108",
+      "period_stars": "+107"
+    },
+    {
+      "rank": 67,
+      "name": "coyer1986/mobile-app-9495",
+      "url": "https://github.com/coyer1986/mobile-app-9495",
+      "desc": "",
+      "lang": "",
+      "stars": "107",
+      "period_stars": "+107"
+    },
+    {
+      "rank": 68,
+      "name": "coyer1986/data-analysis-3627",
+      "url": "https://github.com/coyer1986/data-analysis-3627",
+      "desc": "",
+      "lang": "",
+      "stars": "107",
+      "period_stars": "+105"
+    },
+    {
+      "rank": 69,
+      "name": "coyer1986/portfolio-site-4996",
+      "url": "https://github.com/coyer1986/portfolio-site-4996",
+      "desc": "",
+      "lang": "",
+      "stars": "102",
+      "period_stars": "+101"
+    },
+    {
+      "rank": 70,
+      "name": "dair-ai/Prompt-Engineering-Guide",
+      "url": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+      "desc": "",
+      "lang": "",
+      "stars": "58,708",
+      "period_stars": "+94"
+    },
+    {
+      "rank": 71,
+      "name": "TheAlgorithms/Python",
+      "url": "https://github.com/TheAlgorithms/Python",
+      "desc": "",
+      "lang": "",
+      "stars": "228,290",
+      "period_stars": "+92"
+    },
+    {
+      "rank": 72,
+      "name": "sindresorhus/awesome",
+      "url": "https://github.com/sindresorhus/awesome",
+      "desc": "",
+      "lang": "",
+      "stars": "430,147",
+      "period_stars": "+92"
+    },
+    {
+      "rank": 73,
+      "name": "agentset-ai/agentset",
+      "url": "https://github.com/agentset-ai/agentset",
+      "desc": "",
+      "lang": "",
+      "stars": "342",
+      "period_stars": "+90"
+    },
+    {
+      "rank": 74,
+      "name": "moondevonyt/moon-dev-ai-agents",
+      "url": "https://github.com/moondevonyt/moon-dev-ai-agents",
+      "desc": "",
+      "lang": "",
+      "stars": "395",
+      "period_stars": "+90"
+    },
+    {
+      "rank": 75,
+      "name": "Skyvern-AI/skyvern",
+      "url": "https://github.com/Skyvern-AI/skyvern",
+      "desc": "",
+      "lang": "",
+      "stars": "13,784",
+      "period_stars": "+83"
+    },
+    {
+      "rank": 76,
+      "name": "bleedline/aimoneyhunter",
+      "url": "https://github.com/bleedline/aimoneyhunter",
+      "desc": "",
+      "lang": "",
+      "stars": "15,526",
+      "period_stars": "+80"
+    },
+    {
+      "rank": 77,
+      "name": "awesome-selfhosted/awesome-selfhosted",
+      "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "desc": "",
+      "lang": "",
+      "stars": "214,206",
+      "period_stars": "+79"
+    },
+    {
+      "rank": 78,
+      "name": "myshell-ai/OpenVoice",
+      "url": "https://github.com/myshell-ai/OpenVoice",
+      "desc": "",
+      "lang": "",
+      "stars": "33,512",
+      "period_stars": "+79"
+    },
+    {
+      "rank": 79,
+      "name": "Atlas-OS/Atlas",
+      "url": "https://github.com/Atlas-OS/Atlas",
+      "desc": "",
+      "lang": "",
+      "stars": "17,250",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 80,
+      "name": "HKUDS/RAG-Anything",
+      "url": "https://github.com/HKUDS/RAG-Anything",
+      "desc": "",
+      "lang": "",
+      "stars": "4,850",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 81,
+      "name": "TibixDev/winboat",
+      "url": "https://github.com/TibixDev/winboat",
+      "desc": "",
+      "lang": "",
+      "stars": "4,250",
+      "period_stars": "+77"
+    },
+    {
+      "rank": 82,
+      "name": "lackeyjb/playwright-skill",
+      "url": "https://github.com/lackeyjb/playwright-skill",
+      "desc": "",
+      "lang": "",
+      "stars": "76",
+      "period_stars": "+75"
+    },
+    {
+      "rank": 83,
+      "name": "Lsangeles/sora2-watermark-remover",
+      "url": "https://github.com/Lsangeles/sora2-watermark-remover",
+      "desc": "",
+      "lang": "",
+      "stars": "73",
+      "period_stars": "+73"
+    },
+    {
+      "rank": 84,
+      "name": "aandrew-me/ytDownloader",
+      "url": "https://github.com/aandrew-me/ytDownloader",
+      "desc": "",
+      "lang": "",
+      "stars": "2,925",
+      "period_stars": "+73"
+    },
+    {
+      "rank": 85,
+      "name": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "desc": "",
+      "lang": "",
+      "stars": "66,242",
+      "period_stars": "+73"
+    },
+    {
+      "rank": 86,
+      "name": "imthenachoman/How-To-Secure-A-Linux-Server",
+      "url": "https://github.com/imthenachoman/How-To-Secure-A-Linux-Server",
+      "desc": "",
+      "lang": "",
+      "stars": "19,999",
+      "period_stars": "+71"
+    },
+    {
+      "rank": 87,
+      "name": "BehiSecc/awesome-claude-skills",
+      "url": "https://github.com/BehiSecc/awesome-claude-skills",
+      "desc": "",
+      "lang": "",
+      "stars": "438",
+      "period_stars": "+70"
+    },
+    {
+      "rank": 88,
+      "name": "casino-bonus-no-deposit-2025/casino-bonus",
+      "url": "https://github.com/casino-bonus-no-deposit-2025/casino-bonus",
+      "desc": "",
+      "lang": "",
+      "stars": "70",
+      "period_stars": "+70"
+    },
+    {
+      "rank": 89,
+      "name": "basecamp/omarchy",
+      "url": "https://github.com/basecamp/omarchy",
+      "desc": "",
+      "lang": "",
+      "stars": "7,628",
+      "period_stars": "+69"
+    },
+    {
+      "rank": 90,
+      "name": "wavetermdev/waveterm",
+      "url": "https://github.com/wavetermdev/waveterm",
+      "desc": "",
+      "lang": "",
+      "stars": "11,119",
+      "period_stars": "+69"
+    },
+    {
+      "rank": 91,
+      "name": "karpathy/nanoGPT",
+      "url": "https://github.com/karpathy/nanoGPT",
+      "desc": "",
+      "lang": "",
+      "stars": "43,159",
+      "period_stars": "+67"
+    },
+    {
+      "rank": 92,
+      "name": "travisvn/awesome-claude-skills",
+      "url": "https://github.com/travisvn/awesome-claude-skills",
+      "desc": "",
+      "lang": "",
+      "stars": "180",
+      "period_stars": "+67"
+    },
+    {
+      "rank": 93,
+      "name": "firecrawl/open-agent-builder",
+      "url": "https://github.com/firecrawl/open-agent-builder",
+      "desc": "",
+      "lang": "",
+      "stars": "558",
+      "period_stars": "+66"
+    },
+    {
+      "rank": 94,
+      "name": "luzhenhua/NCE-Flow",
+      "url": "https://github.com/luzhenhua/NCE-Flow",
+      "desc": "",
+      "lang": "",
+      "stars": "357",
+      "period_stars": "+66"
+    },
+    {
+      "rank": 95,
+      "name": "public-apis/public-apis",
+      "url": "https://github.com/public-apis/public-apis",
+      "desc": "",
+      "lang": "",
+      "stars": "319,638",
+      "period_stars": "+66"
+    },
+    {
+      "rank": 96,
+      "name": "aeyakovenko/percolator",
+      "url": "https://github.com/aeyakovenko/percolator",
+      "desc": "",
+      "lang": "",
+      "stars": "65",
+      "period_stars": "+65"
+    },
+    {
+      "rank": 97,
+      "name": "huggingface/chat-ui",
+      "url": "https://github.com/huggingface/chat-ui",
+      "desc": "",
+      "lang": "",
+      "stars": "8,800",
+      "period_stars": "+65"
+    },
+    {
+      "rank": 98,
+      "name": "tiny-craft/tiny-rdm",
+      "url": "https://github.com/tiny-craft/tiny-rdm",
+      "desc": "",
+      "lang": "",
+      "stars": "10,798",
+      "period_stars": "+64"
+    },
+    {
+      "rank": 99,
+      "name": "gyj155/SearchPaperByEmbedding",
+      "url": "https://github.com/gyj155/SearchPaperByEmbedding",
+      "desc": "",
+      "lang": "",
+      "stars": "63",
+      "period_stars": "+63"
+    },
+    {
+      "rank": 100,
+      "name": "harvard-edge/cs249r_book",
+      "url": "https://github.com/harvard-edge/cs249r_book",
+      "desc": "",
+      "lang": "",
+      "stars": "2,374",
+      "period_stars": "+62"
+    }
+  ]
+}

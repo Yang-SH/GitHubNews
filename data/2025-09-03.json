@@ -1,0 +1,908 @@
+{
+  "date": "2025-09-03",
+  "fetched_at": "2026-10-07T19:34:30.346562+08:00",
+  "source": "gharchive-watchevent",
+  "quality": "good",
+  "daily": [
+    {
+      "rank": 1,
+      "name": "dockur/windows",
+      "url": "https://github.com/dockur/windows",
+      "desc": "",
+      "lang": "",
+      "stars": "38,966",
+      "period_stars": "+559"
+    },
+    {
+      "rank": 2,
+      "name": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit",
+      "desc": "",
+      "lang": "",
+      "stars": "557",
+      "period_stars": "+514"
+    },
+    {
+      "rank": 3,
+      "name": "LuckyOne7777/ChatGPT-Micro-Cap-Experiment",
+      "url": "https://github.com/LuckyOne7777/ChatGPT-Micro-Cap-Experiment",
+      "desc": "",
+      "lang": "",
+      "stars": "2,438",
+      "period_stars": "+503"
+    },
+    {
+      "rank": 4,
+      "name": "JimmyLv/awesome-nano-banana",
+      "url": "https://github.com/JimmyLv/awesome-nano-banana",
+      "desc": "",
+      "lang": "",
+      "stars": "1,381",
+      "period_stars": "+411"
+    },
+    {
+      "rank": 5,
+      "name": "ashishpatel26/500-AI-Agents-Projects",
+      "url": "https://github.com/ashishpatel26/500-AI-Agents-Projects",
+      "desc": "",
+      "lang": "",
+      "stars": "5,624",
+      "period_stars": "+399"
+    },
+    {
+      "rank": 6,
+      "name": "the-litte-book-of/linear-algebra",
+      "url": "https://github.com/the-litte-book-of/linear-algebra",
+      "desc": "",
+      "lang": "",
+      "stars": "610",
+      "period_stars": "+362"
+    },
+    {
+      "rank": 7,
+      "name": "microsoft/VibeVoice",
+      "url": "https://github.com/microsoft/VibeVoice",
+      "desc": "",
+      "lang": "",
+      "stars": "4,433",
+      "period_stars": "+342"
+    },
+    {
+      "rank": 8,
+      "name": "bytebot-ai/bytebot",
+      "url": "https://github.com/bytebot-ai/bytebot",
+      "desc": "",
+      "lang": "",
+      "stars": "2,532",
+      "period_stars": "+329"
+    },
+    {
+      "rank": 9,
+      "name": "langflow-ai/langflow",
+      "url": "https://github.com/langflow-ai/langflow",
+      "desc": "",
+      "lang": "",
+      "stars": "77,406",
+      "period_stars": "+327"
+    },
+    {
+      "rank": 10,
+      "name": "chiphuyen/aie-book",
+      "url": "https://github.com/chiphuyen/aie-book",
+      "desc": "",
+      "lang": "",
+      "stars": "5,812",
+      "period_stars": "+315"
+    },
+    {
+      "rank": 11,
+      "name": "crewAIInc/crewAI",
+      "url": "https://github.com/crewAIInc/crewAI",
+      "desc": "",
+      "lang": "",
+      "stars": "17,522",
+      "period_stars": "+305"
+    },
+    {
+      "rank": 12,
+      "name": "pedroslopez/whatsapp-web.js",
+      "url": "https://github.com/pedroslopez/whatsapp-web.js",
+      "desc": "",
+      "lang": "",
+      "stars": "18,763",
+      "period_stars": "+264"
+    },
+    {
+      "rank": 13,
+      "name": "staticGuru/SPA-Landing-Page",
+      "url": "https://github.com/staticGuru/SPA-Landing-Page",
+      "desc": "",
+      "lang": "",
+      "stars": "257",
+      "period_stars": "+255"
+    },
+    {
+      "rank": 14,
+      "name": "armujahid/solana-voting",
+      "url": "https://github.com/armujahid/solana-voting",
+      "desc": "",
+      "lang": "",
+      "stars": "235",
+      "period_stars": "+233"
+    },
+    {
+      "rank": 15,
+      "name": "friends-with-benefits/fwb-subgraph",
+      "url": "https://github.com/friends-with-benefits/fwb-subgraph",
+      "desc": "",
+      "lang": "",
+      "stars": "235",
+      "period_stars": "+232"
+    },
+    {
+      "rank": 16,
+      "name": "Tencent-Hunyuan/HunyuanWorld-Voyager",
+      "url": "https://github.com/Tencent-Hunyuan/HunyuanWorld-Voyager",
+      "desc": "",
+      "lang": "",
+      "stars": "374",
+      "period_stars": "+222"
+    },
+    {
+      "rank": 17,
+      "name": "microsoft/BASIC-M6502",
+      "url": "https://github.com/microsoft/BASIC-M6502",
+      "desc": "",
+      "lang": "",
+      "stars": "210",
+      "period_stars": "+210"
+    },
+    {
+      "rank": 18,
+      "name": "DigitalPlatDev/FreeDomain",
+      "url": "https://github.com/DigitalPlatDev/FreeDomain",
+      "desc": "",
+      "lang": "",
+      "stars": "86,792",
+      "period_stars": "+208"
+    },
+    {
+      "rank": 19,
+      "name": "Learn-with-Sumit/rnext-batch-1-solutions",
+      "url": "https://github.com/Learn-with-Sumit/rnext-batch-1-solutions",
+      "desc": "",
+      "lang": "",
+      "stars": "232",
+      "period_stars": "+208"
+    },
+    {
+      "rank": 20,
+      "name": "LukeGus/Termix",
+      "url": "https://github.com/LukeGus/Termix",
+      "desc": "",
+      "lang": "",
+      "stars": "1,520",
+      "period_stars": "+207"
+    },
+    {
+      "rank": 21,
+      "name": "Shubhamsaboo/awesome-llm-apps",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "desc": "",
+      "lang": "",
+      "stars": "51,087",
+      "period_stars": "+205"
+    },
+    {
+      "rank": 22,
+      "name": "codecrafters-io/build-your-own-x",
+      "url": "https://github.com/codecrafters-io/build-your-own-x",
+      "desc": "",
+      "lang": "",
+      "stars": "268,149",
+      "period_stars": "+205"
+    },
+    {
+      "rank": 23,
+      "name": "Danau5tin/multi-agent-coding-system",
+      "url": "https://github.com/Danau5tin/multi-agent-coding-system",
+      "desc": "",
+      "lang": "",
+      "stars": "296",
+      "period_stars": "+188"
+    },
+    {
+      "rank": 24,
+      "name": "TibixDev/winboat",
+      "url": "https://github.com/TibixDev/winboat",
+      "desc": "",
+      "lang": "",
+      "stars": "791",
+      "period_stars": "+175"
+    },
+    {
+      "rank": 25,
+      "name": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "desc": "",
+      "lang": "",
+      "stars": "3,309",
+      "period_stars": "+162"
+    },
+    {
+      "rank": 26,
+      "name": "sindresorhus/awesome",
+      "url": "https://github.com/sindresorhus/awesome",
+      "desc": "",
+      "lang": "",
+      "stars": "424,094",
+      "period_stars": "+161"
+    },
+    {
+      "rank": 27,
+      "name": "Adembc/lazyssh",
+      "url": "https://github.com/Adembc/lazyssh",
+      "desc": "",
+      "lang": "",
+      "stars": "338",
+      "period_stars": "+156"
+    },
+    {
+      "rank": 28,
+      "name": "PicoTrex/Awesome-Nano-Banana-images",
+      "url": "https://github.com/PicoTrex/Awesome-Nano-Banana-images",
+      "desc": "",
+      "lang": "",
+      "stars": "231",
+      "period_stars": "+156"
+    },
+    {
+      "rank": 29,
+      "name": "asgeirtj/system_prompts_leaks",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks",
+      "desc": "",
+      "lang": "",
+      "stars": "12,209",
+      "period_stars": "+156"
+    },
+    {
+      "rank": 30,
+      "name": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "desc": "",
+      "lang": "",
+      "stars": "118,384",
+      "period_stars": "+152"
+    },
+    {
+      "rank": 31,
+      "name": "openai/codex",
+      "url": "https://github.com/openai/codex",
+      "desc": "",
+      "lang": "",
+      "stars": "31,057",
+      "period_stars": "+152"
+    },
+    {
+      "rank": 32,
+      "name": "pewdiepie-archdaemon/dionysus",
+      "url": "https://github.com/pewdiepie-archdaemon/dionysus",
+      "desc": "",
+      "lang": "",
+      "stars": "1,048",
+      "period_stars": "+144"
+    },
+    {
+      "rank": 33,
+      "name": "1c7/chinese-independent-developer",
+      "url": "https://github.com/1c7/chinese-independent-developer",
+      "desc": "",
+      "lang": "",
+      "stars": "42,804",
+      "period_stars": "+143"
+    },
+    {
+      "rank": 34,
+      "name": "nukeop/nuclear",
+      "url": "https://github.com/nukeop/nuclear",
+      "desc": "",
+      "lang": "",
+      "stars": "14,700",
+      "period_stars": "+137"
+    },
+    {
+      "rank": 35,
+      "name": "sanketnighot/sat-token-deployer-ui",
+      "url": "https://github.com/sanketnighot/sat-token-deployer-ui",
+      "desc": "",
+      "lang": "",
+      "stars": "133",
+      "period_stars": "+130"
+    },
+    {
+      "rank": 36,
+      "name": "automazeio/ccpm",
+      "url": "https://github.com/automazeio/ccpm",
+      "desc": "",
+      "lang": "",
+      "stars": "2,016",
+      "period_stars": "+129"
+    },
+    {
+      "rank": 37,
+      "name": "oraios/serena",
+      "url": "https://github.com/oraios/serena",
+      "desc": "",
+      "lang": "",
+      "stars": "6,919",
+      "period_stars": "+128"
+    },
+    {
+      "rank": 38,
+      "name": "agentscope-ai/agentscope",
+      "url": "https://github.com/agentscope-ai/agentscope",
+      "desc": "",
+      "lang": "",
+      "stars": "304",
+      "period_stars": "+124"
+    },
+    {
+      "rank": 39,
+      "name": "docling-project/docling",
+      "url": "https://github.com/docling-project/docling",
+      "desc": "",
+      "lang": "",
+      "stars": "10,376",
+      "period_stars": "+121"
+    },
+    {
+      "rank": 40,
+      "name": "rustdesk/rustdesk",
+      "url": "https://github.com/rustdesk/rustdesk",
+      "desc": "",
+      "lang": "",
+      "stars": "95,028",
+      "period_stars": "+121"
+    },
+    {
+      "rank": 41,
+      "name": "raiv200/Tic-Tac-Toe-Game",
+      "url": "https://github.com/raiv200/Tic-Tac-Toe-Game",
+      "desc": "",
+      "lang": "",
+      "stars": "122",
+      "period_stars": "+120"
+    },
+    {
+      "rank": 42,
+      "name": "mdsalahuddin2001/currency-converter",
+      "url": "https://github.com/mdsalahuddin2001/currency-converter",
+      "desc": "",
+      "lang": "",
+      "stars": "121",
+      "period_stars": "+118"
+    },
+    {
+      "rank": 43,
+      "name": "zakirullin/cognitive-load",
+      "url": "https://github.com/zakirullin/cognitive-load",
+      "desc": "",
+      "lang": "",
+      "stars": "8,681",
+      "period_stars": "+116"
+    },
+    {
+      "rank": 44,
+      "name": "infocodiste/SniperBot",
+      "url": "https://github.com/infocodiste/SniperBot",
+      "desc": "",
+      "lang": "",
+      "stars": "115",
+      "period_stars": "+115"
+    },
+    {
+      "rank": 45,
+      "name": "ysfkel/solana-tweeter",
+      "url": "https://github.com/ysfkel/solana-tweeter",
+      "desc": "",
+      "lang": "",
+      "stars": "115",
+      "period_stars": "+114"
+    },
+    {
+      "rank": 46,
+      "name": "resemble-ai/chatterbox",
+      "url": "https://github.com/resemble-ai/chatterbox",
+      "desc": "",
+      "lang": "",
+      "stars": "6,984",
+      "period_stars": "+113"
+    },
+    {
+      "rank": 47,
+      "name": "katelya77/KatelyaTV",
+      "url": "https://github.com/katelya77/KatelyaTV",
+      "desc": "",
+      "lang": "",
+      "stars": "306",
+      "period_stars": "+112"
+    },
+    {
+      "rank": 48,
+      "name": "TencentCloudADP/youtu-agent",
+      "url": "https://github.com/TencentCloudADP/youtu-agent",
+      "desc": "",
+      "lang": "",
+      "stars": "260",
+      "period_stars": "+107"
+    },
+    {
+      "rank": 49,
+      "name": "wshobson/agents",
+      "url": "https://github.com/wshobson/agents",
+      "desc": "",
+      "lang": "",
+      "stars": "6,764",
+      "period_stars": "+106"
+    },
+    {
+      "rank": 50,
+      "name": "appcypher/awesome-mcp-servers",
+      "url": "https://github.com/appcypher/awesome-mcp-servers",
+      "desc": "",
+      "lang": "",
+      "stars": "3,227",
+      "period_stars": "+104"
+    },
+    {
+      "rank": 51,
+      "name": "awesome-selfhosted/awesome-selfhosted",
+      "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "desc": "",
+      "lang": "",
+      "stars": "209,672",
+      "period_stars": "+104"
+    },
+    {
+      "rank": 52,
+      "name": "google/comprehensive-rust",
+      "url": "https://github.com/google/comprehensive-rust",
+      "desc": "",
+      "lang": "",
+      "stars": "30,406",
+      "period_stars": "+102"
+    },
+    {
+      "rank": 53,
+      "name": "HKUDS/DeepCode",
+      "url": "https://github.com/HKUDS/DeepCode",
+      "desc": "",
+      "lang": "",
+      "stars": "3,070",
+      "period_stars": "+98"
+    },
+    {
+      "rank": 54,
+      "name": "bmad-code-org/BMAD-METHOD",
+      "url": "https://github.com/bmad-code-org/BMAD-METHOD",
+      "desc": "",
+      "lang": "",
+      "stars": "2,778",
+      "period_stars": "+98"
+    },
+    {
+      "rank": 55,
+      "name": "trueadm/ripple",
+      "url": "https://github.com/trueadm/ripple",
+      "desc": "",
+      "lang": "",
+      "stars": "831",
+      "period_stars": "+98"
+    },
+    {
+      "rank": 56,
+      "name": "hiyouga/LLaMA-Factory",
+      "url": "https://github.com/hiyouga/LLaMA-Factory",
+      "desc": "",
+      "lang": "",
+      "stars": "47,981",
+      "period_stars": "+95"
+    },
+    {
+      "rank": 57,
+      "name": "o1xec/Pharos-Testnet-Bot",
+      "url": "https://github.com/o1xec/Pharos-Testnet-Bot",
+      "desc": "",
+      "lang": "",
+      "stars": "95",
+      "period_stars": "+95"
+    },
+    {
+      "rank": 58,
+      "name": "google/langextract",
+      "url": "https://github.com/google/langextract",
+      "desc": "",
+      "lang": "",
+      "stars": "8,304",
+      "period_stars": "+93"
+    },
+    {
+      "rank": 59,
+      "name": "shiyu-coder/Kronos",
+      "url": "https://github.com/shiyu-coder/Kronos",
+      "desc": "",
+      "lang": "",
+      "stars": "2,302",
+      "period_stars": "+93"
+    },
+    {
+      "rank": 60,
+      "name": "DavidHDev/react-bits",
+      "url": "https://github.com/DavidHDev/react-bits",
+      "desc": "",
+      "lang": "",
+      "stars": "17,832",
+      "period_stars": "+92"
+    },
+    {
+      "rank": 61,
+      "name": "QuentinFuxa/WhisperLiveKit",
+      "url": "https://github.com/QuentinFuxa/WhisperLiveKit",
+      "desc": "",
+      "lang": "",
+      "stars": "3,530",
+      "period_stars": "+91"
+    },
+    {
+      "rank": 62,
+      "name": "google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "desc": "",
+      "lang": "",
+      "stars": "43,872",
+      "period_stars": "+90"
+    },
+    {
+      "rank": 63,
+      "name": "simstudioai/sim",
+      "url": "https://github.com/simstudioai/sim",
+      "desc": "",
+      "lang": "",
+      "stars": "9,087",
+      "period_stars": "+90"
+    },
+    {
+      "rank": 64,
+      "name": "Canner/WrenAI",
+      "url": "https://github.com/Canner/WrenAI",
+      "desc": "",
+      "lang": "",
+      "stars": "9,558",
+      "period_stars": "+88"
+    },
+    {
+      "rank": 65,
+      "name": "polarsys/b612",
+      "url": "https://github.com/polarsys/b612",
+      "desc": "",
+      "lang": "",
+      "stars": "1,275",
+      "period_stars": "+86"
+    },
+    {
+      "rank": 66,
+      "name": "vinta/awesome-python",
+      "url": "https://github.com/vinta/awesome-python",
+      "desc": "",
+      "lang": "",
+      "stars": "277,536",
+      "period_stars": "+86"
+    },
+    {
+      "rank": 67,
+      "name": "trimstray/the-book-of-secret-knowledge",
+      "url": "https://github.com/trimstray/the-book-of-secret-knowledge",
+      "desc": "",
+      "lang": "",
+      "stars": "186,046",
+      "period_stars": "+85"
+    },
+    {
+      "rank": 68,
+      "name": "call-of-duty-cheat/warzone-cheat",
+      "url": "https://github.com/call-of-duty-cheat/warzone-cheat",
+      "desc": "",
+      "lang": "",
+      "stars": "84",
+      "period_stars": "+84"
+    },
+    {
+      "rank": 69,
+      "name": "dipakkr/A-to-Z-Resources-for-Students",
+      "url": "https://github.com/dipakkr/A-to-Z-Resources-for-Students",
+      "desc": "",
+      "lang": "",
+      "stars": "20,132",
+      "period_stars": "+84"
+    },
+    {
+      "rank": 70,
+      "name": "firecrawl/open-lovable",
+      "url": "https://github.com/firecrawl/open-lovable",
+      "desc": "",
+      "lang": "",
+      "stars": "1,507",
+      "period_stars": "+83"
+    },
+    {
+      "rank": 71,
+      "name": "clash-verge-rev/clash-verge-rev",
+      "url": "https://github.com/clash-verge-rev/clash-verge-rev",
+      "desc": "",
+      "lang": "",
+      "stars": "66,131",
+      "period_stars": "+81"
+    },
+    {
+      "rank": 72,
+      "name": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "desc": "",
+      "lang": "",
+      "stars": "54,946",
+      "period_stars": "+81"
+    },
+    {
+      "rank": 73,
+      "name": "moeru-ai/airi",
+      "url": "https://github.com/moeru-ai/airi",
+      "desc": "",
+      "lang": "",
+      "stars": "7,520",
+      "period_stars": "+80"
+    },
+    {
+      "rank": 74,
+      "name": "ZyperWave/ZyperWinOptimize",
+      "url": "https://github.com/ZyperWave/ZyperWinOptimize",
+      "desc": "",
+      "lang": "",
+      "stars": "831",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 75,
+      "name": "massgravel/Microsoft-Activation-Scripts",
+      "url": "https://github.com/massgravel/Microsoft-Activation-Scripts",
+      "desc": "",
+      "lang": "",
+      "stars": "142,194",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 76,
+      "name": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "desc": "",
+      "lang": "",
+      "stars": "60,452",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 77,
+      "name": "xixu-me/Xget",
+      "url": "https://github.com/xixu-me/Xget",
+      "desc": "",
+      "lang": "",
+      "stars": "2,324",
+      "period_stars": "+78"
+    },
+    {
+      "rank": 78,
+      "name": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "desc": "",
+      "lang": "",
+      "stars": "5,725",
+      "period_stars": "+77"
+    },
+    {
+      "rank": 79,
+      "name": "public-apis/public-apis",
+      "url": "https://github.com/public-apis/public-apis",
+      "desc": "",
+      "lang": "",
+      "stars": "316,666",
+      "period_stars": "+77"
+    },
+    {
+      "rank": 80,
+      "name": "raiv200/Launch-Countdown-Timer",
+      "url": "https://github.com/raiv200/Launch-Countdown-Timer",
+      "desc": "",
+      "lang": "",
+      "stars": "90",
+      "period_stars": "+77"
+    },
+    {
+      "rank": 81,
+      "name": "raiv200/animated-blurry-background",
+      "url": "https://github.com/raiv200/animated-blurry-background",
+      "desc": "",
+      "lang": "",
+      "stars": "77",
+      "period_stars": "+76"
+    },
+    {
+      "rank": 82,
+      "name": "langgenius/dify",
+      "url": "https://github.com/langgenius/dify",
+      "desc": "",
+      "lang": "",
+      "stars": "105,347",
+      "period_stars": "+75"
+    },
+    {
+      "rank": 83,
+      "name": "LunarBar-app/LunarBar",
+      "url": "https://github.com/LunarBar-app/LunarBar",
+      "desc": "",
+      "lang": "",
+      "stars": "522",
+      "period_stars": "+74"
+    },
+    {
+      "rank": 84,
+      "name": "MatrixSeven/file-transfer-go",
+      "url": "https://github.com/MatrixSeven/file-transfer-go",
+      "desc": "",
+      "lang": "",
+      "stars": "1,130",
+      "period_stars": "+74"
+    },
+    {
+      "rank": 85,
+      "name": "activepieces/activepieces",
+      "url": "https://github.com/activepieces/activepieces",
+      "desc": "",
+      "lang": "",
+      "stars": "15,843",
+      "period_stars": "+74"
+    },
+    {
+      "rank": 86,
+      "name": "apple/ml-fastvlm",
+      "url": "https://github.com/apple/ml-fastvlm",
+      "desc": "",
+      "lang": "",
+      "stars": "4,638",
+      "period_stars": "+74"
+    },
+    {
+      "rank": 87,
+      "name": "vllm-project/semantic-router",
+      "url": "https://github.com/vllm-project/semantic-router",
+      "desc": "",
+      "lang": "",
+      "stars": "298",
+      "period_stars": "+74"
+    },
+    {
+      "rank": 88,
+      "name": "weaviate/elysia",
+      "url": "https://github.com/weaviate/elysia",
+      "desc": "",
+      "lang": "",
+      "stars": "666",
+      "period_stars": "+73"
+    },
+    {
+      "rank": 89,
+      "name": "9001/copyparty",
+      "url": "https://github.com/9001/copyparty",
+      "desc": "",
+      "lang": "",
+      "stars": "16,985",
+      "period_stars": "+72"
+    },
+    {
+      "rank": 90,
+      "name": "ast-grep/ast-grep",
+      "url": "https://github.com/ast-grep/ast-grep",
+      "desc": "",
+      "lang": "",
+      "stars": "8,833",
+      "period_stars": "+72"
+    },
+    {
+      "rank": 91,
+      "name": "eriklindernoren/ML-From-Scratch",
+      "url": "https://github.com/eriklindernoren/ML-From-Scratch",
+      "desc": "",
+      "lang": "",
+      "stars": "28,653",
+      "period_stars": "+72"
+    },
+    {
+      "rank": 92,
+      "name": "aishwaryanr/awesome-generative-ai-guide",
+      "url": "https://github.com/aishwaryanr/awesome-generative-ai-guide",
+      "desc": "",
+      "lang": "",
+      "stars": "14,530",
+      "period_stars": "+71"
+    },
+    {
+      "rank": 93,
+      "name": "raiv200/NextAuth-Next.js-13",
+      "url": "https://github.com/raiv200/NextAuth-Next.js-13",
+      "desc": "",
+      "lang": "",
+      "stars": "73",
+      "period_stars": "+71"
+    },
+    {
+      "rank": 94,
+      "name": "raiv200/Nextjs-Auth0",
+      "url": "https://github.com/raiv200/Nextjs-Auth0",
+      "desc": "",
+      "lang": "",
+      "stars": "73",
+      "period_stars": "+71"
+    },
+    {
+      "rank": 95,
+      "name": "upstash/context7",
+      "url": "https://github.com/upstash/context7",
+      "desc": "",
+      "lang": "",
+      "stars": "19,331",
+      "period_stars": "+71"
+    },
+    {
+      "rank": 96,
+      "name": "CyC2018/CS-Notes",
+      "url": "https://github.com/CyC2018/CS-Notes",
+      "desc": "",
+      "lang": "",
+      "stars": "169,297",
+      "period_stars": "+70"
+    },
+    {
+      "rank": 97,
+      "name": "Pimzino/spec-workflow-mcp",
+      "url": "https://github.com/Pimzino/spec-workflow-mcp",
+      "desc": "",
+      "lang": "",
+      "stars": "542",
+      "period_stars": "+69"
+    },
+    {
+      "rank": 98,
+      "name": "anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code",
+      "desc": "",
+      "lang": "",
+      "stars": "22,286",
+      "period_stars": "+69"
+    },
+    {
+      "rank": 99,
+      "name": "jwasham/coding-interview-university",
+      "url": "https://github.com/jwasham/coding-interview-university",
+      "desc": "",
+      "lang": "",
+      "stars": "318,574",
+      "period_stars": "+69"
+    },
+    {
+      "rank": 100,
+      "name": "musistudio/claude-code-router",
+      "url": "https://github.com/musistudio/claude-code-router",
+      "desc": "",
+      "lang": "",
+      "stars": "9,599",
+      "period_stars": "+69"
+    }
+  ]
+}
