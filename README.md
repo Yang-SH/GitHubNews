@@ -59,7 +59,7 @@ python scripts/fetch_trending.py --only daily
 uv run --with pytest --with requests --with beautifulsoup4 pytest -q
 ```
 
-本地运行提示：README 摘录需要访问 `api.github.com`，未认证限额为 60 次/小时/IP，建议设置 `GITHUB_TOKEN` 环境变量（每日报告约需 12-50 次）。
+本地运行提示：README 摘录需要访问 `api.github.com`，未认证限额为 60 次/小时/IP，建议设置 `GITHUB_TOKEN` 环境变量（每日报告约需 25 次，重试上限 50 次）。
 
 ## 目录结构
 
