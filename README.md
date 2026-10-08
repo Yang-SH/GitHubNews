@@ -13,7 +13,7 @@
 <!-- reports:index:start -->
 ## 最新报告
 
-- **日报**：[2026-10-07](reports/daily/2026-10-07.md)
+- **日报**：[2026-10-08](reports/daily/2026-10-08.md)
 - **月报**：暂无
 - **年报**：[2026](reports/yearly/2026.md)
 
@@ -21,6 +21,7 @@
 
 ### 日报（最新在前）
 
+- [2026-10-08](reports/daily/2026-10-08.md)
 - [2026-10-07](reports/daily/2026-10-07.md)
 - [2026-10-06](reports/daily/2026-10-06.md)
 
@@ -37,6 +38,10 @@
 <!-- analysis:index:start -->
 ## 项目分析
 
+- [2026-10-07-text-to-cad](analysis/2026-10-07-text-to-cad.md)
+- [2026-10-07-openGym](analysis/2026-10-07-openGym.md)
+- [2026-10-07-impeccable](analysis/2026-10-07-impeccable.md)
+- [2026-10-07-AnyPS5](analysis/2026-10-07-AnyPS5.md)
 - [2026-10-06-skills](analysis/2026-10-06-skills.md)
 - [2026-10-06-rea](analysis/2026-10-06-rea.md)
 - [2026-10-06-e2e](analysis/2026-10-06-e2e.md)
