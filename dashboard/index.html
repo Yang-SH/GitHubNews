@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHubNews 看板</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --panel: #f6f8fa;
+    --border: #d8dee4;
+    --hairline: #eaeef2;
+    --ink: #1f2328;
+    --muted: #59636e;
+    --link: #0969da;
+    --g0: #ebedf0;   /* 无数据 */
+    --g1: #9be9a8;
+    --g2: #4ac265;
+    --g3: #2da44e;
+    --g4: #116329;
+    --mono: ui-monospace, "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.6 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
+  .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- 头部 ---------- */
+  header { padding: 36px 0 8px; }
+  h1 { margin: 0; font-size: 22px; font-weight: 650; letter-spacing: .01em; }
+  .sub { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+  .kpi {
+    display: flex; flex-wrap: wrap; gap: 4px 22px;
+    margin: 18px 0 10px; font-size: 13.5px; color: var(--muted);
+  }
+  .kpi b { font-weight: 600; color: var(--ink); font-size: 15px; }
+  .kpi .num { font-size: 16px; }
+
+  /* ---------- 贡献日历 ---------- */
+  .cal-scroll { overflow-x: auto; padding-bottom: 4px; }
+  .cal-scroll svg { display: block; min-width: 880px; }
+  .legend {
+    display: flex; align-items: center; gap: 10px;
+    margin: 8px 0 0; color: var(--muted); font-size: 12.5px;
+  }
+  .legend .sw { display: inline-flex; gap: 3px; }
+  .legend .sw i { width: 10px; height: 10px; border-radius: 2px; }
+  .legend .sw .hollow { background: var(--g1); opacity: .5; border: 1px dashed var(--g4); }
+
+  section.rule { border: 0; border-top: 1px solid var(--hairline); margin: 28px 0; }
+
+  /* ---------- 主体两栏 ---------- */
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 44px; }
+  @media (max-width: 900px) { .cols { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* ---------- 单日榜单 ---------- */
+  .daynav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .daynav button {
+    font: inherit; font-size: 15px; line-height: 1;
+    padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--panel); color: var(--ink); cursor: pointer;
+  }
+  .daynav button:hover { background: var(--hairline); }
+  .daynav input[type="date"] {
+    font: 15px var(--mono); padding: 6px 8px;
+    border: 1px solid var(--border); border-radius: 6px; color: var(--ink);
+  }
+  .daymeta { margin: 10px 0 4px; color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .tag {
+    display: inline-block; padding: 1px 8px; border-radius: 10px;
+    font-size: 12px; border: 1px solid var(--border); background: var(--panel);
+  }
+  .tag.warn { border-color: #d4a72c66; background: #fff8c5; color: #4d2d00; }
+
+  ol.board { list-style: none; margin: 12px 0 0; padding: 0; }
+  ol.board li {
+    display: grid; grid-template-columns: 30px minmax(0, 1fr) auto;
+    gap: 4px 12px; padding: 13px 0 11px; border-top: 1px solid var(--hairline);
+  }
+  ol.board li:first-child { border-top: 0; }
+  .rank { color: var(--muted); font-size: 13px; padding-top: 2px; text-align: right; }
+  .rname { font-family: var(--mono); font-size: 14.5px; font-weight: 600; }
+  .rdesc { grid-column: 2 / 3; color: var(--muted); font-size: 13.5px; line-height: 1.55;
+           display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .rlang { grid-column: 2 / 3; color: var(--muted); font-size: 12.5px; }
+  .rfig { text-align: right; padding-top: 1px; }
+  .rstars { color: var(--muted); font-size: 12.5px; display: block; }
+  .rgain { font-family: var(--mono); font-variant-numeric: tabular-nums;
+           font-size: 15px; font-weight: 600; color: var(--g4); display: block; }
+  .rbar { grid-column: 1 / -1; height: 3px; border-radius: 2px; background: var(--g0); overflow: hidden; }
+  .rbar i { display: block; height: 100%; background: var(--g3); }
+
+  /* ---------- 右栏 ---------- */
+  .rail h2 { margin: 0 0 12px; font-size: 15px; font-weight: 650; }
+  .rail h3 { margin: 22px 0 10px; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+  .hbar { display: grid; grid-template-columns: 108px minmax(0, 1fr) 44px;
+          gap: 8px; align-items: center; padding: 3px 0; font-size: 13px; }
+  .hbar .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hbar .track { height: 10px; background: var(--g0); border-radius: 2px; overflow: hidden; }
+  .hbar .track i { display: block; height: 100%; background: var(--g3); }
+  .hbar .val { text-align: right; color: var(--muted); font-family: var(--mono); font-size: 12.5px; }
+  .tabs { display: flex; gap: 18px; border-bottom: 1px solid var(--hairline); margin-bottom: 10px; }
+  .tabs button {
+    font: inherit; font-size: 13.5px; padding: 0 2px 8px; border: 0; background: none;
+    color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .tabs button[aria-selected="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--g3); }
+  .rail .note { color: var(--muted); font-size: 12.5px; margin: 10px 0 0; }
+
+  /* ---------- 页脚 ---------- */
+  footer { margin-top: 40px; border-top: 1px solid var(--hairline); padding: 20px 0 56px;
+           color: var(--muted); font-size: 13px; }
+  footer p { margin: 6px 0; max-width: 78ch; }
+  footer code { font-family: var(--mono); font-size: 12px; background: var(--panel);
+                padding: 1px 5px; border-radius: 4px; }
+  .fatal { margin: 48px 0; padding: 16px 20px; border: 1px solid var(--border);
+           border-radius: 8px; background: var(--panel); max-width: 72ch; }
+  @media (prefers-reduced-motion: no-preference) {
+    .rbar i, .hbar .track i, .daynav button { transition: background-color .15s ease; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>GitHubNews 看板</h1>
+    <p class="sub" id="sub">加载中…</p>
+    <div class="kpi" id="kpi"></div>
+  </header>
+
+  <div class="cal-scroll" id="calwrap" aria-label="每日热度日历，颜色越深表示当天最热项目新增 Star 越多"></div>
+  <div class="legend">
+    <span>当日最热项目新增 Star</span>
+    <span class="sw">
+      <i style="background:var(--g0)"></i><i style="background:var(--g1)"></i>
+      <i style="background:var(--g2)"></i><i style="background:var(--g3)"></i>
+      <i style="background:var(--g4)"></i>
+    </span>
+    <span class="sw"><i class="hollow"></i></span>
+    <span>虚线框 = 回填数据质量降级（GH Archive 捕获不全）</span>
+  </div>
+
+  <hr class="rule">
+
+  <div class="cols">
+    <main>
+      <div class="daynav">
+        <button id="prev" aria-label="前一天">‹</button>
+        <input type="date" id="datepick" aria-label="选择日期">
+        <button id="next" aria-label="后一天">›</button>
+      </div>
+      <p class="daymeta" id="daymeta"></p>
+      <ol class="board" id="board"></ol>
+    </main>
+
+    <aside class="rail">
+      <h2>当日语言分布</h2>
+      <div id="langs"></div>
+
+      <h3 id="hotitle">全部天数累计</h3>
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tab-days" aria-selected="true">上榜天数</button>
+        <button role="tab" id="tab-peak" aria-selected="false">单日峰值</button>
+      </div>
+      <div id="hot"></div>
+      <p class="note" id="hotnote"></p>
+    </aside>
+  </div>
+
+  <footer>
+    <p><strong>口径说明</strong>　2026-10-06 起为官方 Trending（daily）抓取，每天约 12 条；
+       此前为 GH Archive WatchEvent 回填的"当日新增 Star Top 100"，按 UTC 天计算，
+       desc / lang 为时点数据故历史为空；2026-04-01 ~ 2026-10-05 未回填（公共事件流捕获率过低），看板留白。
+       色阶按"当日最热项目新增 Star"分位绘制，两段口径不同，比较时请以各自段内为准。</p>
+    <p>完整榜单见 <a href="../data/">data/</a> 快照与 <a href="../README.md">README</a>；
+       本页由 <code>scripts/build_dashboard.py</code> 生成，随每日工作流入库。</p>
+  </footer>
+</div>
+
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const fmt = n => n == null ? '—' : n.toLocaleString('en-US');
+const fmtP = n => n == null ? '—' : '+' + n.toLocaleString('en-US');
+
+let S = null, dates = [], sel = -1, hotTab = 'days';
+
+const GC = ['#ebedf0', '#9be9a8', '#4ac265', '#2da44e', '#116329'];
+
+function srcLabel(d) {
+  if (d.src === 'official') return '官方 Trending';
+  return '回填 GH Archive' + (d.q === 'degraded' ? ' · 质量 degraded' : ' · 质量 good');
+}
+
+/* ---------- 覆盖缺口 ---------- */
+function gaps() {
+  const out = [];
+  for (let i = 1; i < dates.length; i++) {
+    const a = new Date(dates[i - 1]), b = new Date(dates[i]);
+    const diff = Math.round((b - a) / 86400000);
+    if (diff > 1) out.push([dates[i - 1], dates[i], diff - 1]);
+  }
+  return out;
+}
+
+function renderHead() {
+  $('#sub').textContent = `${S.first} → ${S.last} · ${S.count} 个每日快照`;
+  const gs = gaps().map(([a, b, n]) => `${a} → ${b} 缺 ${n} 天`).join('；');
+  const peak = S.peak ? `<b class="num mono">${fmtP(S.peak.top)}</b> 单日最热（${S.peak.date}）` : '';
+  const top = S.appear[0] ? `<b class="num mono">${S.appear[0].n}</b> 上榜 ${S.appear[0].days} 天` : '';
+  const langs = `<b class="num">${S.langs.total}</b> 种语言`;
+  $('#kpi').innerHTML =
+    (peak ? `<span>${peak}</span>` : '') +
+    (top ? `<span>${top}</span>` : '') +
+    `<span>${langs}</span>` +
+    (gs ? `<span>${gs}</span>` : '');
+  $('#hotitle').textContent = `全部 ${S.count} 天累计`;
+}
+
+/* ---------- 贡献日历 ---------- */
+function renderCalendar() {
+  const tops = dates.map(d => S.days[d].top).filter(v => v > 0).sort((a, b) => a - b);
+  const q = p => tops.length ? tops[Math.min(tops.length - 1, Math.floor(p * tops.length))] : 1;
+  const th = [q(.2), q(.4), q(.6), q(.8)];
+  const bucket = v => v == null || v <= 0 ? 0 : (v > th[3] ? 4 : v > th[2] ? 3 : v > th[1] ? 2 : 1);
+
+  const cell = 12, gap = 3, pad = 34, top = 18;
+  const first = new Date(S.first + 'T00:00:00Z');
+  const start = new Date(first);
+  start.setUTCDate(start.getUTCDate() - ((start.getUTCDay() + 6) % 7)); // 回到周一
+  const last = new Date(S.last + 'T00:00:00Z');
+  const weeks = Math.ceil((last - start) / 86400000 / 7) + 1;
+  const W = pad + weeks * (cell + gap), H = top + 7 * (cell + gap);
+
+  const dayIdx = new Map(dates.map((d, i) => [d, i]));
+  let rects = '', labels = '', prevMonth = -1;
+  const weekdays = { 1: '一', 3: '三', 5: '五' };
+  for (let r = 0; r < 7; r++) if (weekdays[r]) {
+    labels += `<text x="${pad - 8}" y="${top + r * (cell + gap) + cell - 2}" text-anchor="end"
+      class="mono" font-size="9" fill="#59636e">${weekdays[r]}</text>`;
+  }
+  for (let w = 0; w < weeks; w++) {
+    for (let r = 0; r < 7; r++) {
+      const t = new Date(start); t.setUTCDate(t.getUTCDate() + w * 7 + r);
+      if (t < first || t > last) continue;
+      const iso = t.toISOString().slice(0, 10);
+      const x = pad + w * (cell + gap), y = top + r * (cell + gap);
+      const i = dayIdx.get(iso);
+      if (i === undefined) {
+        rects += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2.5" fill="${GC[0]}"><title>${iso} · 无数据</title></rect>`;
+        continue;
+      }
+      const d = S.days[iso];
+      const b = bucket(d.top);
+      const hollow = d.src !== 'official' && d.q === 'degraded';
+      const month = t.getUTCMonth();
+      if (r === 0 && month !== prevMonth) {
+        prevMonth = month;
+        labels += `<text x="${x}" y="10" class="mono" font-size="9.5" fill="#59636e">${month + 1}月</text>`;
+      }
+      rects += `<rect data-i="${i}" x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2.5"
+        fill="${GC[b]}" ${hollow ? 'stroke="#116329" stroke-dasharray="2 2" opacity=".55"' : ''}
+        style="cursor:pointer"><title>${iso} · ${srcLabel(d)} · ${d.n} 条 · 最热 ${fmtP(d.top)}</title></rect>`;
+    }
+  }
+  const svg = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img"
+    aria-label="每日热度日历">${labels}${rects}</svg>`;
+  $('#calwrap').innerHTML = svg;
+  $('#calwrap').addEventListener('click', e => {
+    const rect = e.target.closest('rect[data-i]');
+    if (rect) select(+rect.dataset.i);
+  });
+  paintSel();
+}
+
+function paintSel() {
+  document.querySelectorAll('#calwrap rect[data-i]').forEach(r => {
+    const isSel = +r.dataset.i === sel;
+    const hollow = r.getAttribute('opacity') === '.55';
+    r.setAttribute('stroke', isSel ? '#1f2328' : hollow ? '#116329' : 'none');
+    r.setAttribute('stroke-dasharray', !isSel && hollow ? '2 2' : 'none');
+    r.setAttribute('stroke-width', isSel ? '1.6' : '1');
+  });
+}
+
+/* ---------- 单日榜单 ---------- */
+function renderDay() {
+  const iso = dates[sel], d = S.days[iso];
+  $('#datepick').value = iso;
+  const full = d.n > d.items.length;
+  $('#daymeta').innerHTML =
+    `<span><span class="tag${d.src !== 'official' && d.q === 'degraded' ? ' warn' : ''}">${srcLabel(d)}</span></span>` +
+    `<span>${d.n} 条</span>` +
+    `<span>最热 <b class="mono">${fmtP(d.top)}</b></span>` +
+    (full ? `<span><a href="../data/${iso}.json">完整榜单（${d.n} 条）</a></span>` : '');
+  const maxP = d.top || 1;
+  $('#board').innerHTML = d.items.map((it, i) => {
+    const lang = it.l ? `${it.l}` : (d.src === 'official' ? '语言未知' : '');
+    return `<li>
+      <span class="rank mono">${i + 1}</span>
+      <span class="rname"><a href="https://github.com/${it.n}" target="_blank" rel="noopener">${it.n}</a></span>
+      <span class="rfig"><span class="rgain">${fmtP(it.p)}</span><span class="rstars mono">★ ${fmt(it.s)}</span></span>
+      ${it.d ? `<span class="rdesc">${esc(it.d)}</span>` : ''}
+      ${lang ? `<span class="rlang">${esc(lang)}</span>` : ''}
+      <span class="rbar"><i style="width:${Math.max(2, Math.round((it.p || 0) / maxP * 100))}%"></i></span>
+    </li>`;
+  }).join('');
+  renderLangs(d);
+}
+
+function renderLangs(d) {
+  const counts = {};
+  d.items.forEach(it => { if (it.l) counts[it.l] = (counts[it.l] || 0) + 1; });
+  const rows = Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8);
+  if (!rows.length) {
+    $('#langs').innerHTML = '<p class="note">历史回填数据不含语言字段。</p>';
+    return;
+  }
+  const max = rows[0][1];
+  $('#langs').innerHTML = rows.map(([l, n]) =>
+    `<div class="hbar"><span class="lbl">${esc(l)}</span>
+     <span class="track"><i style="width:${Math.round(n / max * 100)}%"></i></span>
+     <span class="val">${n}</span></div>`).join('');
+}
+
+function esc(s) { return s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+
+/* ---------- 累计热榜 ---------- */
+function renderHot() {
+  const rows = S.appear.slice(0, 15);
+  const byDays = hotTab === 'days';
+  const sorted = [...rows].sort((a, b) => byDays ? b.days - a.days : (b.best || 0) - (a.best || 0));
+  const max = byDays ? sorted[0].days : Math.max(...sorted.map(r => r.best || 0), 1);
+  $('#hot').innerHTML = sorted.map(r => {
+    const v = byDays ? r.days : r.best;
+    return `<div class="hbar"><span class="lbl mono" title="${r.n}">${r.n}</span>
+      <span class="track"><i style="width:${Math.max(2, Math.round(v / max * 100))}%"></i></span>
+      <span class="val">${byDays ? r.days + ' 天' : fmtP(r.best)}</span></div>`;
+  }).join('');
+  $('#hotnote').textContent = byDays
+    ? `按出现在每日榜单的天数排序（共 ${S.appear.length} 个仓库入榜统计）。`
+    : '按单日新增 Star 峰值排序，括注日期为峰值日。';
+}
+
+/* ---------- 导航 ---------- */
+function select(i) {
+  sel = Math.max(0, Math.min(dates.length - 1, i));
+  paintSel();
+  renderDay();
+}
+$('#prev').addEventListener('click', () => select(sel - 1));
+$('#next').addEventListener('click', () => select(sel + 1));
+$('#datepick').addEventListener('change', e => {
+  const v = e.target.value;
+  if (!v) return;
+  if (S.days[v]) { select(dates.indexOf(v)); return; }
+  let i = dates.findIndex(d => d > v);       // 落在缺口里 → 取其后最近一天
+  if (i === -1) i = dates.length - 1;
+  select(i);
+});
+$('#tab-days').addEventListener('click', () => setTab('days'));
+$('#tab-peak').addEventListener('click', () => setTab('peak'));
+function setTab(t) {
+  hotTab = t;
+  $('#tab-days').setAttribute('aria-selected', t === 'days');
+  $('#tab-peak').setAttribute('aria-selected', t === 'peak');
+  renderHot();
+}
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowLeft') select(sel - 1);
+  if (e.key === 'ArrowRight') select(sel + 1);
+});
+
+/* ---------- 启动 ---------- */
+fetch('summary.json').then(r => {
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}).then(data => {
+  S = data;
+  dates = Object.keys(S.days).sort();
+  sel = dates.length - 1;
+  renderHead();
+  renderCalendar();
+  renderDay();
+  renderHot();
+}).catch(err => {
+  document.body.querySelector('.wrap').innerHTML = `<div class="fatal">
+    <strong>看板数据加载失败</strong>（${esc(String(err))}）。
+    <p>summary.json 需通过 HTTP 访问，直接双击打开本文件会被浏览器拦截。
+    在仓库根目录运行：</p>
+    <p><code>uv run python -m http.server 8000</code></p>
+    <p>然后打开 <a href="http://127.0.0.1:8000/dashboard/">http://127.0.0.1:8000/dashboard/</a>。</p>
+  </div>`;
+});
+</script>
+</body>
+</html>
