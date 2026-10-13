@@ -44,6 +44,19 @@
   }
   .kpi b { font-weight: 600; color: var(--ink); font-size: 15px; }
   .kpi .num { font-size: 16px; }
+  .scope {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 12px 0 20px;
+  }
+  .scope button {
+    font: inherit; font-size: 13px; padding: 6px 10px;
+    border: 1px solid var(--border); border-radius: 6px;
+    background: var(--panel); color: var(--muted); cursor: pointer;
+  }
+  .scope button[aria-pressed="true"] {
+    border-color: var(--ink); background: var(--ink); color: #fff;
+  }
+  .scope button:hover { border-color: var(--ink); }
 
   /* ---------- 贡献日历 ---------- */
   .cal-scroll { overflow-x: auto; padding-bottom: 4px; }
@@ -116,6 +129,40 @@
   .tabs button[aria-selected="true"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--g3); }
   .rail .note { color: var(--muted); font-size: 12.5px; margin: 10px 0 0; }
 
+  /* ---------- 趋势面板 ---------- */
+  .trend-section { margin-top: 42px; }
+  .trend-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .trend-heading h2 { margin: 0; font-size: 19px; letter-spacing: -.01em; }
+  .trend-heading p { margin: 0; color: var(--muted); font-size: 12.5px; }
+  .trend-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 16px; }
+  .trend-card { min-width: 0; border: 1px solid var(--border); border-radius: 8px; padding: 18px; background: #fff; }
+  .trend-card h3 { margin: 0; font-size: 15px; }
+  .trend-card > .note { color: var(--muted); font-size: 12.5px; margin: 6px 0 14px; }
+  .trend-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 12px 0 16px; }
+  .trend-metric { padding: 10px 12px; background: var(--panel); border-left: 3px solid var(--g3); }
+  .trend-metric .label { display: block; color: var(--muted); font-size: 12px; }
+  .trend-metric .value { display: block; margin-top: 2px; font: 600 19px/1.35 var(--mono); font-variant-numeric: tabular-nums; }
+  .trend-table-wrap { overflow-x: auto; }
+  .trend-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .trend-table th, .trend-table td { padding: 7px 6px; border-top: 1px solid var(--hairline); text-align: left; vertical-align: top; }
+  .trend-table th { color: var(--muted); font-weight: 550; white-space: nowrap; }
+  .trend-table td:first-child { white-space: nowrap; font-family: var(--mono); }
+  .trend-table .trend-detail { min-width: 180px; }
+  .trend-note { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
+  .star-controls { display: flex; align-items: center; gap: 10px; margin: 12px 0; }
+  .star-controls label { color: var(--muted); font-size: 12.5px; }
+  .star-controls select { max-width: 100%; min-width: 0; padding: 6px 8px; border: 1px solid var(--border); border-radius: 5px; font: 13px var(--mono); }
+  .star-chart { overflow-x: auto; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .star-chart svg { display: block; min-width: 420px; width: 100%; height: auto; }
+  .trend-status { color: var(--muted); }
+  .delta-up { color: #1a7f37; }
+  .delta-down { color: #cf222e; }
+  @media (max-width: 760px) {
+    .trend-grid { grid-template-columns: 1fr; }
+    .trend-heading { display: block; }
+    .trend-heading p { margin-top: 4px; }
+  }
+
   /* ---------- 页脚 ---------- */
   footer { margin-top: 40px; border-top: 1px solid var(--hairline); padding: 20px 0 56px;
            color: var(--muted); font-size: 13px; }
@@ -135,6 +182,7 @@
     <h1>GitHubNews 看板</h1>
     <p class="sub" id="sub">加载中…</p>
     <div class="kpi" id="kpi"></div>
+    <div class="scope" id="scope" role="group" aria-label="选择数据来源"></div>
   </header>
 
   <div class="cal-scroll" id="calwrap" aria-label="每日热度日历，颜色越深表示当天最热项目新增 Star 越多"></div>
@@ -176,11 +224,30 @@
     </aside>
   </div>
 
+  <section class="trend-section" aria-labelledby="trend-title">
+    <div class="trend-heading">
+      <h2 id="trend-title">趋势观测</h2>
+      <p>榜单出现与仓库 Star 是两种独立信号，不互相推断。</p>
+    </div>
+    <div class="trend-grid">
+      <section class="trend-card" aria-labelledby="official-trend-title">
+        <h3 id="official-trend-title">官方 Trending 榜单变化</h3>
+        <p class="note">仅比较官方日榜。新上榜/排名变化以相邻有效快照为准；缺失日期不视为未上榜。</p>
+        <div id="official-trend"></div>
+      </section>
+      <section class="trend-card" aria-labelledby="star-trend-title">
+        <h3 id="star-trend-title">仓库累计 Star 观测</h3>
+        <p class="note">仅使用 GitHub Repositories API 的累计 Star；失败观测不参与差值，也不记为 0。</p>
+        <div id="star-trend"></div>
+      </section>
+    </div>
+  </section>
+
   <footer>
-    <p><strong>口径说明</strong>　2026-10-06 起为官方 Trending（daily）抓取，每天约 12 条；
+    <p><strong>口径说明</strong>　按上方来源切换分别统计，不跨来源合并比较。2026-10-06 起为官方 Trending（daily）抓取，每天实际约 8–13 条；
        此前为 GH Archive WatchEvent 回填的"当日新增 Star Top 100"，按 UTC 天计算，
        desc / lang 为时点数据故历史为空；2026-04-01 ~ 2026-10-05 未回填（公共事件流捕获率过低），看板留白。
-       色阶按"当日最热项目新增 Star"分位绘制，两段口径不同，比较时请以各自段内为准。</p>
+       回填 good 与 degraded 质量等级也分别统计；色阶按当前来源的"当日最热项目新增 Star"分位绘制。</p>
     <p>完整榜单见 <a href="https://github.com/Yang-SH/GitHubNews/tree/main/data">data/</a> 快照与
        <a href="https://github.com/Yang-SH/GitHubNews#readme">README</a>；
        本页由 <code>scripts/build_dashboard.py</code> 生成，随每日工作流入库。</p>
@@ -193,13 +260,38 @@ const $ = s => document.querySelector(s);
 const fmt = n => n == null ? '—' : n.toLocaleString('en-US');
 const fmtP = n => n == null ? '—' : '+' + n.toLocaleString('en-US');
 
-let S = null, dates = [], sel = -1, hotTab = 'days';
+let S = null, C = null, activeCohort = '', dates = [], sel = -1, hotTab = 'days', selectedStarRepo = '';
 
 const GC = ['#ebedf0', '#9be9a8', '#4ac265', '#2da44e', '#116329'];
 
 function srcLabel(d) {
   if (d.src === 'official') return '官方 Trending';
-  return '回填 GH Archive' + (d.q === 'degraded' ? ' · 质量 degraded' : ' · 质量 good');
+  if (d.src === 'gharchive-watchevent') {
+    return `回填 GH Archive · 质量 ${d.q || '未分级'}`;
+  }
+  return `${d.src}${d.q ? ` · 质量 ${d.q}` : ''}`;
+}
+
+function cohortLabel(cohort) {
+  if (cohort.source === 'official') return '官方 Trending';
+  if (cohort.source === 'gharchive-watchevent') {
+    return `历史回填 · ${cohort.quality || '未分级'}`;
+  }
+  return `${cohort.source}${cohort.quality ? ` · ${cohort.quality}` : ''}`;
+}
+
+function selectCohort(key) {
+  activeCohort = key;
+  C = S.cohorts[key];
+  dates = Object.keys(C.days).sort();
+  sel = dates.length - 1;
+  document.querySelectorAll('#scope button').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.cohort === key));
+  });
+  renderHead();
+  renderCalendar();
+  renderDay();
+  renderHot();
 }
 
 /* ---------- 覆盖缺口 ---------- */
@@ -214,31 +306,33 @@ function gaps() {
 }
 
 function renderHead() {
-  $('#sub').textContent = `${S.first} → ${S.last} · ${S.count} 个每日快照`;
+  $('#sub').textContent = `${cohortLabel(C)} · ${C.first} → ${C.last} · ${C.count} 个有效每日快照`;
   const gs = gaps().map(([a, b, n]) => `${a} → ${b} 缺 ${n} 天`).join('；');
-  const peak = S.peak ? `<b class="num mono">${fmtP(S.peak.top)}</b> 单日最热（${S.peak.date}）` : '';
-  const top = S.appear[0] ? `<b class="num mono">${S.appear[0].n}</b> 上榜 ${S.appear[0].days} 天` : '';
-  const langs = `<b class="num">${S.langs.total}</b> 种语言`;
+  const peak = C.peak ? `<b class="num mono">${fmtP(C.peak.top)}</b> 单日最热（${C.peak.date}）` : '';
+  const top = C.appear[0] ? `<b class="num mono">${esc(C.appear[0].n)}</b> 上榜 ${C.appear[0].days} 天` : '';
+  const langs = C.langs.total
+    ? `<b class="num">${C.langs.total}</b> 种语言`
+    : '<span>语言数据不可用</span>';
   $('#kpi').innerHTML =
     (peak ? `<span>${peak}</span>` : '') +
     (top ? `<span>${top}</span>` : '') +
     `<span>${langs}</span>` +
     (gs ? `<span>${gs}</span>` : '');
-  $('#hotitle').textContent = `全部 ${S.count} 天累计`;
+  $('#hotitle').textContent = `${cohortLabel(C)} · ${C.count} 天累计`;
 }
 
 /* ---------- 贡献日历 ---------- */
 function renderCalendar() {
-  const tops = dates.map(d => S.days[d].top).filter(v => v > 0).sort((a, b) => a - b);
+  const tops = dates.map(d => C.days[d].top).filter(v => v > 0).sort((a, b) => a - b);
   const q = p => tops.length ? tops[Math.min(tops.length - 1, Math.floor(p * tops.length))] : 1;
   const th = [q(.2), q(.4), q(.6), q(.8)];
   const bucket = v => v == null || v <= 0 ? 0 : (v > th[3] ? 4 : v > th[2] ? 3 : v > th[1] ? 2 : 1);
 
   const cell = 12, gap = 3, pad = 34, top = 18;
-  const first = new Date(S.first + 'T00:00:00Z');
+  const first = new Date(C.first + 'T00:00:00Z');
   const start = new Date(first);
   start.setUTCDate(start.getUTCDate() - ((start.getUTCDay() + 6) % 7)); // 回到周一
-  const last = new Date(S.last + 'T00:00:00Z');
+  const last = new Date(C.last + 'T00:00:00Z');
   const weeks = Math.ceil((last - start) / 86400000 / 7) + 1;
   const W = pad + weeks * (cell + gap), H = top + 7 * (cell + gap);
 
@@ -260,7 +354,7 @@ function renderCalendar() {
         rects += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2.5" fill="${GC[0]}"><title>${iso} · 无数据</title></rect>`;
         continue;
       }
-      const d = S.days[iso];
+      const d = C.days[iso];
       const b = bucket(d.top);
       const hollow = d.src !== 'official' && d.q === 'degraded';
       const month = t.getUTCMonth();
@@ -276,10 +370,10 @@ function renderCalendar() {
   const svg = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img"
     aria-label="每日热度日历">${labels}${rects}</svg>`;
   $('#calwrap').innerHTML = svg;
-  $('#calwrap').addEventListener('click', e => {
+  $('#calwrap').onclick = e => {
     const rect = e.target.closest('rect[data-i]');
     if (rect) select(+rect.dataset.i);
-  });
+  };
   paintSel();
 }
 
@@ -295,14 +389,14 @@ function paintSel() {
 
 /* ---------- 单日榜单 ---------- */
 function renderDay() {
-  const iso = dates[sel], d = S.days[iso];
+  const iso = dates[sel], d = C.days[iso];
   $('#datepick').value = iso;
-  const full = d.n > d.items.length;
+  const truncated = d.n > d.shown;
   $('#daymeta').innerHTML =
     `<span><span class="tag${d.src !== 'official' && d.q === 'degraded' ? ' warn' : ''}">${srcLabel(d)}</span></span>` +
     `<span>${d.n} 条</span>` +
     `<span>最热 <b class="mono">${fmtP(d.top)}</b></span>` +
-    (full ? `<span><a href="../data/${iso}.json">完整榜单（${d.n} 条）</a></span>` : '');
+    (truncated ? `<span>当前显示 ${d.shown} / ${d.n} 条 · <a href="../data/${iso}.json">查看完整榜单</a></span>` : '');
   const maxP = d.top || 1;
   $('#board').innerHTML = d.items.map((it, i) => {
     const lang = it.l ? `${it.l}` : (d.src === 'official' ? '语言未知' : '');
@@ -319,11 +413,9 @@ function renderDay() {
 }
 
 function renderLangs(d) {
-  const counts = {};
-  d.items.forEach(it => { if (it.l) counts[it.l] = (counts[it.l] || 0) + 1; });
-  const rows = Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8);
+  const rows = Object.entries(d.lang_counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8);
   if (!rows.length) {
-    $('#langs').innerHTML = '<p class="note">历史回填数据不含语言字段。</p>';
+    $('#langs').innerHTML = '<p class="note">此来源的快照不含语言字段。</p>';
     return;
   }
   const max = rows[0][1];
@@ -335,9 +427,150 @@ function renderLangs(d) {
 
 function esc(s) { return s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
+/* ---------- 趋势观测 ---------- */
+function renderOfficialTrends() {
+  const trends = S.official_trends;
+  if (!trends || !trends.daily.length) {
+    $('#official-trend').innerHTML = '<p class="trend-status">暂无有效官方日榜快照，不能计算趋势。</p>';
+    return;
+  }
+  const metric = (key, label) => {
+    const row = trends.windows[key];
+    if (!row) return `<div class="trend-metric"><span class="label">${label}</span><span class="value">—</span></div>`;
+    return `<div class="trend-metric">
+      <span class="label">${label} · ${row.start} 至 ${row.end}</span>
+      <span class="value">${row.snapshots}/${row.expected_days}</span>
+      <span class="label">有效快照 · 覆盖 ${(row.coverage * 100).toFixed(0)}%</span>
+      <span class="label">新上榜 ${row.new_entry_count} 次 · 重复 ${row.repeated_entry_count} 次 · 名次变化 ${row.rank_change_count} 次</span>
+    </div>`;
+  };
+  const daily = [...trends.daily].slice(-14).reverse();
+  const body = daily.map(row => {
+    const comparison = row.comparison;
+    const baseline = comparison
+      ? `${comparison.previous_date}${comparison.gap_days > 1 ? ` · 间隔 ${comparison.gap_days} 天` : ''}`
+      : '无前序基线';
+    const newcomers = comparison
+      ? (comparison.new_repos.length
+        ? comparison.new_repos.slice(0, 3).map(name => `<a href="https://github.com/${encodeURIComponent(name)}" target="_blank" rel="noopener">${esc(name)}</a>`).join('、') +
+          (comparison.new_repos.length > 3 ? ` 等 ${comparison.new_repos.length} 个` : '')
+        : '—')
+      : '无前序基线';
+    const ranks = comparison && comparison.rank_changes.length
+      ? comparison.rank_changes.slice(0, 3).map(item =>
+        `${esc(item.n)} ${item.from}→${item.to} (${item.change > 0 ? '+' : ''}${item.change})`
+      ).join('；')
+      : '—';
+    return `<tr>
+      <td>${row.date}</td><td>${row.count}</td><td>${baseline}</td>
+      <td class="trend-detail">${newcomers}</td>
+      <td>${comparison ? comparison.repeated_count : '—'}</td>
+      <td class="trend-detail">${ranks}</td>
+    </tr>`;
+  }).join('');
+  $('#official-trend').innerHTML =
+    `<div class="trend-metrics">${metric('7d', '近 7 日覆盖')}${metric('30d', '近 30 日覆盖')}</div>` +
+    `<div class="trend-table-wrap"><table class="trend-table">
+      <thead><tr><th>日期</th><th>实采</th><th>对比基线</th><th>新上榜</th><th>重复</th><th>名次变化*</th></tr></thead>
+      <tbody>${body}</tbody>
+    </table></div>
+    <p class="trend-note">近 7/30 日统计窗口按日历日计算。*名次变化仅统计两期均上榜的项目；(+N) 表示排名上升 N 位。表格展示最近 14 个有效快照。</p>`;
+}
+
+function deltaLabel(change) {
+  if (!change || change.status !== 'ok') return '数据不足';
+  const value = change.delta > 0 ? `+${fmt(change.delta)}` : fmt(change.delta);
+  const cls = change.delta > 0 ? 'delta-up' : change.delta < 0 ? 'delta-down' : '';
+  return `<span class="${cls}">${value}</span>`;
+}
+
+function starStatusLabel(status) {
+  return ({
+    ok: '成功',
+    not_found: '仓库不存在/不可访问',
+    forbidden: '无权访问',
+    rate_limited: 'API 限流',
+    network_error: '网络错误',
+    invalid_response: '响应无效',
+    not_attempted: '预算不足，未请求',
+  })[status] || '未知状态';
+}
+
+function renderStarChart(repo) {
+  const values = repo.observations.filter(row => row.status === 'ok' && Number.isInteger(row.stars));
+  if (!values.length) return '<p class="trend-status">没有有效 Star 观测。</p>';
+  const width = 680, height = 170, left = 48, right = 14, top = 14, bottom = 30;
+  const minDate = Date.parse(`${values[0].date}T00:00:00Z`);
+  const maxDate = Date.parse(`${values[values.length - 1].date}T00:00:00Z`);
+  const minStars = Math.min(...values.map(row => row.stars));
+  const maxStars = Math.max(...values.map(row => row.stars));
+  const x = row => maxDate === minDate ? (left + width - right) / 2
+    : left + (Date.parse(`${row.date}T00:00:00Z`) - minDate) / (maxDate - minDate) * (width - left - right);
+  const y = row => maxStars === minStars ? (top + height - bottom) / 2
+    : height - bottom - (row.stars - minStars) / (maxStars - minStars) * (height - top - bottom);
+  const points = values.map(row => `${x(row).toFixed(1)},${y(row).toFixed(1)}`).join(' ');
+  const circles = values.map(row =>
+    `<circle cx="${x(row).toFixed(1)}" cy="${y(row).toFixed(1)}" r="3" fill="#116329"><title>${row.date} · ${fmt(row.stars)} Stars</title></circle>`
+  ).join('');
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(repo.name)} 累计 Star 时间序列">
+    <line x1="${left}" y1="${height - bottom}" x2="${width - right}" y2="${height - bottom}" stroke="#d8dee4"/>
+    <polyline points="${points}" fill="none" stroke="#2da44e" stroke-width="2"/>
+    ${circles}
+    <text x="${left}" y="${height - 8}" fill="#59636e" font-size="11">${values[0].date}</text>
+    <text x="${width - right}" y="${height - 8}" text-anchor="end" fill="#59636e" font-size="11">${values[values.length - 1].date}</text>
+    <text x="${left - 5}" y="${top + 4}" text-anchor="end" fill="#59636e" font-size="11">${fmt(maxStars)}</text>
+    <text x="${left - 5}" y="${height - bottom}" text-anchor="end" fill="#59636e" font-size="11">${fmt(minStars)}</text>
+  </svg>`;
+}
+
+function renderStarTracking() {
+  const tracking = S.star_tracking;
+  const host = $('#star-trend');
+  if (!tracking || !tracking.repos || !tracking.repos.length) {
+    host.innerHTML = '<p class="trend-status">当前没有官方 Trending 候选仓库。Star 数据独立保存于 data/repo-stars/。</p>';
+    return;
+  }
+  if (!tracking.snapshot_count) {
+    host.innerHTML = `<p class="trend-status">候选 ${tracking.repos.length} 个；尚无 Star 观测快照。采集建立基线后才可计算差值。</p>`;
+    return;
+  }
+  const repo = tracking.repos.find(row => row.name === selectedStarRepo) || tracking.repos[0];
+  selectedStarRepo = repo.name;
+  const selectOptions = tracking.repos.map(row =>
+    `<option value="${esc(row.name)}"${row.name === repo.name ? ' selected' : ''}>${esc(row.name)}</option>`
+  ).join('');
+  const successful = repo.observations.filter(row => row.status === 'ok').length;
+  const failed = repo.observations.length - successful;
+  const describeChange = (change, label) => change.status !== 'ok'
+    ? `<div class="trend-metric"><span class="label">${label}</span><span class="value">数据不足</span>
+       <span class="label">${change.end_date ? `最近有效结束日 ${change.end_date}；有效观测 ${change.valid_observations || 0} 次，暂无符合窗口的基线` : '尚无有效观测'}</span></div>`
+    : `<div class="trend-metric"><span class="label">${label}</span><span class="value">${deltaLabel(change)}</span>
+       <span class="label">${change.baseline_date} → ${change.end_date} · 实际 ${change.interval_days} 天</span>
+       <span class="label">区间有效观测 ${change.observed_days}/${change.expected_days} 日</span></div>`;
+  const recent = [...repo.observations].slice(-8).reverse().map(row =>
+    `<tr><td>${row.date}</td><td>${row.status === 'ok' ? fmt(row.stars) : '未观测'}</td><td>${starStatusLabel(row.status)}</td></tr>`
+  ).join('');
+  host.innerHTML =
+    `<div class="star-controls"><label for="star-repo">仓库</label><select id="star-repo">${selectOptions}</select></div>` +
+    `<p class="trend-note">API 快照 ${tracking.first || '—'} 至 ${tracking.last || '—'} · ${tracking.snapshot_count} 个采集日 · 本仓库有效 ${successful} 次 / 失败或未请求 ${failed} 次</p>` +
+    `<div class="trend-metrics">${describeChange(repo.change_7d, '近 7 日 Star 差值')}${describeChange(repo.change_30d, '近 30 日 Star 差值')}</div>` +
+    `<div class="star-chart">${renderStarChart(repo)}</div>` +
+    `<div class="trend-table-wrap"><table class="trend-table"><thead><tr><th>观测日</th><th>累计 Star</th><th>状态</th></tr></thead><tbody>${recent || '<tr><td colspan="3">没有观测记录</td></tr>'}</tbody></table></div>` +
+    `<p class="trend-note">只对上榜候选仓库执行追踪；未上榜不代表 Star 没有增长。窗口基线允许 7 日差 6–8 天、30 日差 27–33 天。</p>`;
+  $('#star-repo').addEventListener('change', event => {
+    selectedStarRepo = event.target.value;
+    renderStarTracking();
+  });
+}
+
 /* ---------- 累计热榜 ---------- */
 function renderHot() {
-  const rows = S.appear.slice(0, 15);
+  const rows = C.appear.slice(0, 15);
+  if (!rows.length) {
+    $('#hot').innerHTML = '<p class="note">暂无可汇总的榜单条目。</p>';
+    $('#hotnote').textContent = '';
+    return;
+  }
   const byDays = hotTab === 'days';
   const sorted = [...rows].sort((a, b) => byDays ? b.days - a.days : (b.best || 0) - (a.best || 0));
   const max = byDays ? sorted[0].days : Math.max(...sorted.map(r => r.best || 0), 1);
@@ -348,7 +581,7 @@ function renderHot() {
       <span class="val">${byDays ? r.days + ' 天' : fmtP(r.best)}</span></div>`;
   }).join('');
   $('#hotnote').textContent = byDays
-    ? `按出现在每日榜单的天数排序（共 ${S.appear.length} 个仓库入榜统计）。`
+    ? `仅统计当前来源快照（共 ${C.appear.length} 个仓库入榜）。`
     : '按单日新增 Star 峰值排序，括注日期为峰值日。';
 }
 
@@ -363,7 +596,7 @@ $('#next').addEventListener('click', () => select(sel + 1));
 $('#datepick').addEventListener('change', e => {
   const v = e.target.value;
   if (!v) return;
-  if (S.days[v]) { select(dates.indexOf(v)); return; }
+  if (C.days[v]) { select(dates.indexOf(v)); return; }
   let i = dates.findIndex(d => d > v);       // 落在缺口里 → 取其后最近一天
   if (i === -1) i = dates.length - 1;
   select(i);
@@ -388,12 +621,20 @@ fetch('summary.json').then(r => {
   return r.json();
 }).then(data => {
   S = data;
-  dates = Object.keys(S.days).sort();
-  sel = dates.length - 1;
-  renderHead();
-  renderCalendar();
-  renderDay();
-  renderHot();
+  const keys = Object.keys(S.cohorts);
+  if (!keys.length) throw new Error('没有可展示的数据来源');
+  $('#scope').innerHTML = keys.map(key =>
+    `<button type="button" data-cohort="${esc(key)}" aria-pressed="false">
+      ${esc(cohortLabel(S.cohorts[key]))} · ${S.cohorts[key].count} 天
+    </button>`).join('');
+  $('#scope').addEventListener('click', e => {
+    const button = e.target.closest('button[data-cohort]');
+    if (button) selectCohort(button.dataset.cohort);
+  });
+  const preferred = keys.includes('official') ? 'official' : keys[0];
+  renderOfficialTrends();
+  renderStarTracking();
+  selectCohort(preferred);
 }).catch(err => {
   document.body.querySelector('.wrap').innerHTML = `<div class="fatal">
     <strong>看板数据加载失败</strong>（${esc(String(err))}）。

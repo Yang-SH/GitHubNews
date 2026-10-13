@@ -65,6 +65,8 @@
 # 本地运行（需已安装 uv，依赖由脚本头部的 PEP 723 元数据自动解析）
 uv run scripts/fetch_trending.py                # 按当天日期自动判断生成日报/月报/年报
 uv run scripts/fetch_trending.py --only daily   # 只生成指定周期（daily/monthly/yearly 可多次使用）
+uv run scripts/track_stars.py                   # 追踪最近 30 天官方榜单项目的总 Star（需 GITHUB_TOKEN）
+uv run scripts/review_star_tracking.py --window-days 30  # 按北京时间今天结束，复核覆盖/成功率/配额/耗时
 
 # 历史回填：GH Archive WatchEvent 每日新增 Star Top 100（幂等，已有日期跳过）
 uv run scripts/backfill_trending.py             # 默认 2025-01-01 → 2026-03-31（事件流可靠性截止）
@@ -74,7 +76,7 @@ uv run scripts/backfill_trending.py --start 2025-06-01 --end 2025-06-30
 pip install -r requirements.txt
 python scripts/fetch_trending.py --only daily
 
-# 看板：重新生成聚合数据并本地预览（打开 http://127.0.0.1:8000/dashboard/）
+# 看板：重新生成榜单与 Star 趋势聚合并本地预览（打开 http://127.0.0.1:8000/dashboard/）
 uv run python scripts/build_dashboard.py
 uv run python -m http.server 8000
 
@@ -83,6 +85,8 @@ uv run --with pytest --with requests --with beautifulsoup4 pytest -q
 ```
 
 本地运行提示：README 摘录需要访问 `api.github.com`，未认证限额为 60 次/小时/IP，建议设置 `GITHUB_TOKEN` 环境变量（每日报告约需 25 次，重试上限 50 次）。
+Star 追踪使用 GitHub Repositories API，需要设置 `GITHUB_TOKEN`；每日观测独立保存到 `data/repo-stars/`，只追踪最近 30 个日历日内出现在官方 Trending（日榜）的仓库，历史回填项目不会纳入。默认最多发起 400 次 HTTP 请求（重试计入上限）、最多运行 480 秒；若达到预算或 API 限流，会保存已观测与未执行状态并以非零状态告警，不影响工作流继续生成日报。
+看板趋势只对官方榜单计算新/重复上榜和共同上榜项目排名变化；Star 增长只使用 API 成功观测，并在有效基线存在时展示 7/30 日差值、实际间隔与观测覆盖。缺少数据不补零，GH Archive 回填仍独立显示。
 
 ## 目录结构
 
@@ -90,8 +94,8 @@ uv run --with pytest --with requests --with beautifulsoup4 pytest -q
 ├── .github/workflows/   # CI：每日报告（trending.yml）与测试（tests.yml）
 ├── analysis/            # 人工审核入库的项目分析（见 analysis/README.md）
 ├── dashboard/           # 数据看板：index.html 静态页面 + summary.json 聚合（build_dashboard.py 生成）
-├── data/                # 每日数据快照 JSON（含 README 摘录；2025 起含历史回填，供分析消费）
+├── data/                # 每日榜单快照与 repo-stars/ 仓库每日总 Star 观测
 ├── reports/             # 自动生成的榜单报告（daily / monthly / yearly）
-├── scripts/             # fetch_trending.py 每日抓取；backfill_trending.py 历史回填；build_dashboard.py 看板聚合
+├── scripts/             # 日常抓取、Star 追踪与复盘、历史回填、看板聚合
 └── tests/               # 回归测试
 ```

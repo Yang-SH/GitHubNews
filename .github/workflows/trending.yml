@@ -39,6 +39,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/fetch_trending.py
 
+      - name: Track stars for recent official trending repositories
+        id: track_stars
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/track_stars.py
+
       # 只依赖标准库，无需额外安装
       - name: Build dashboard summary
         run: python scripts/build_dashboard.py
@@ -73,3 +80,18 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"msgtype\":\"text\",\"text\":{\"content\":\"GitHubNews trending 报告生成失败，请检查 Actions 日志（$(date -u +'%F %TZ')）\"}}" \
             || echo "通知发送失败（不影响主流程判断）。"
+
+      - name: Warn and notify on incomplete Star tracking
+        if: always() && steps.track_stars.outcome == 'failure'
+        env:
+          WEBHOOK_URL: ${{ secrets.NOTIFY_WEBHOOK_URL }}
+        run: |
+          echo "::warning::Star 追踪失败或覆盖不完整；日报仍会继续生成和提交，请检查 track_stars 日志。"
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "NOTIFY_WEBHOOK_URL 未设置，无法发送外部告警。"
+            exit 0
+          fi
+          curl -sf -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "{\"msgtype\":\"text\",\"text\":{\"content\":\"GitHubNews Star 追踪失败或覆盖不完整；日报已继续处理，请检查 GitHub Actions 日志（$(date -u +'%F %TZ')）\"}}" \
+            || echo "Star 追踪通知发送失败（不影响日报主流程）。"

@@ -20,6 +20,37 @@
 3. **人工审核**：核对事实（Star 数、功能描述、快照日期）、删改观点、确认无误。
 4. **入库**：按命名规范保存到本目录并提交；根 README 索引在脚本下次运行时自动收录。
 
+## 每日 Star 连续观测（data/repo-stars/）
+
+`scripts/track_stars.py` 每日读取最近 30 个日历日的官方日榜快照，并查询 GitHub
+Repositories API 的仓库总 Star，输出到 `data/repo-stars/YYYY-MM-DD.json`。候选只来自
+官方 Trending，不包含 GH Archive 历史回填或 Search API 年报项目。此目录与
+`data/YYYY-MM-DD.json` 榜单快照分开，避免不同来源被当成同一种榜单数据。
+
+- `stars` 是 API 返回的累计 Star 数；首次观测只建立基线，不代表当日新增。
+- `status` 为 `ok` 时 `stars` 是非负整数；失败或未请求时为 `null`，不得解释为 0。状态包括 `not_found`、`forbidden`、`rate_limited`、`network_error`、`invalid_response` 和 `not_attempted`。
+- `last_seen` 记录该仓库最近一次出现在官方日榜的日期。
+- 文件记录候选数、至少发起一次请求的仓库数、实际 HTTP 请求数（含重试）、成功/失败数、未请求数和 API 剩余额度。
+- 遇到限流或预算上限时，剩余候选标为 `not_attempted`；采集会告警且不阻断日报工作流。
+- 7/30 日差值必须使用两次有效 API 总 Star 观测计算，不能使用 `period_stars` 或 GH Archive `stars` 作为基线。
+- `GITHUB_TOKEN` 仅通过环境变量提供；本地可运行 `uv run scripts/track_stars.py`，缺少 token 时脚本明确报错且不写成功快照。
+- 采集快照包含 `duration_seconds`，用于运行复核。试运行窗口结束后，可运行
+  `uv run python scripts/review_star_tracking.py --end-date YYYY-MM-DD --window-days 30`
+  汇总覆盖、缺失/无效日期、候选和请求成功率、耗时及 API 剩余额度；缺失统计不会被补零。
+
+## 看板趋势口径
+
+`uv run python scripts/build_dashboard.py` 会从 `data/YYYY-MM-DD.json` 和
+`data/repo-stars/YYYY-MM-DD.json` 生成 `dashboard/summary.json`。官方榜单变化
+只使用官方 Trending 快照，按相邻有效快照对比；名次只比较两次都在榜的仓库，
+缺失日期不会当作未上榜。近 7/30 日覆盖率按日历窗口的实际官方快照数计算，
+并显示有效日期数，不会把窗口缺口补成零。
+
+Star 时间序列仅展示最近 30 个日历日内上过官方榜的候选仓库。差值端点和基线
+必须是 API 成功观测，7 日基线允许相隔 6–8 天，30 日基线允许相隔 27–33 天；
+页面展示实际间隔及基线至结束日期间有效观测数。无合格基线、失败请求或未请求
+均不折算为零；GH Archive 回填指标不进入这两项趋势。
+
 ## 命名规范
 
 `YYYY-MM-DD-<slug>.md`，日期取所依据快照的日期，slug 用仓库短名，如 `2026-10-06-claude-mem.md`。
@@ -80,4 +111,3 @@ Star Top 100"。
 2026-03-31。另外 2026-10 实测官方 Trending 页面每日仅返回 12 条且不再支持
 翻页，因此该时段的每日百名榜单已无法从任何公开渠道重建；日常抓取自
 2026-10-06 起以官方页面为准继续积累。
-
