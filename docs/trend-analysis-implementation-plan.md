@@ -1,6 +1,6 @@
 # GitHub 趋势分析落地方案
 
-> 状态：阶段 1–3 已实施；阶段 4 复盘工具已就绪，30 天试运行待部署启动
+> 状态：阶段 1–4 准备已部署至 main；30 天观测待首个有效线上 Star 快照启动  
 > 编制基线：2026-10-13
 > 适用范围：本仓库 GitHub Trending 日常采集、仓库 Star 追踪、静态看板与相关 GitHub Actions
 
@@ -211,7 +211,7 @@ data/
 5. 满 30 天后复核 7 日指标覆盖；满约 33 天后复核 30 日指标基线覆盖。
 6. 只有在实际分析价值、API 额度和运行时间都达标后，才考虑扩大候选来源或追踪规则；第一版不自动扩展为 Search API 全站采样。
 
-**实施准备记录（2026-10-13）：** 新增 `scripts/review_star_tracking.py`，可按指定结束日期汇总任意日历窗口的快照覆盖、缺失/无效日期、候选数、请求数、成功率、失败/未请求日期、运行耗时及 API 剩余额度；无观测时比率/额度/耗时返回 `null`，不以零伪装数据。`scripts/track_stars.py` 新生成的快照持久化 `duration_seconds`，供事后复盘。运行示例：`uv run python scripts/review_star_tracking.py --end-date YYYY-MM-DD --window-days 30`。阶段 1–3 当前尚未部署到默认分支，故本地准备不等于试运行已开始；30 天起始日应以全部阶段部署后的首个有效 Actions 采集日为准。首次真实请求、API 配额/运行耗时抽查和连续 30 天覆盖复核均尚未完成。
+**实施与启动记录（2026-10-13）：** 新增 `scripts/review_star_tracking.py`，可按指定结束日期汇总任意日历窗口的快照覆盖、缺失/无效日期、候选数、请求数、成功率、失败/未请求日期、运行耗时及 API 剩余额度；无观测时比率/额度/耗时返回 `null`，不以零伪装数据。`scripts/track_stars.py` 新生成的快照持久化 `duration_seconds`，供事后复盘。运行示例：`uv run python scripts/review_star_tracking.py --end-date YYYY-MM-DD --window-days 30`。阶段 1–4 准备已于 commit `e870ea6` 推送到 `main`，GitHub Tests workflow 已通过；Trending Reports workflow 仅由定时计划或手动 dispatch 触发，push 不会启动采集。30 天观测尚未开始，起始日以首个有效线上 Star 采集快照日期为准；首次真实请求、API 配额/运行耗时抽查和连续 30 天覆盖复核仍待完成。
 
 **最终验收条件：**
 
