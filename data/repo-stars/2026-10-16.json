@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-16",
+  "fetched_at": "2026-10-16T00:37:57.810591+00:00",
+  "source": "github-repos-api",
+  "candidate_policy": "official-trending-last-seen-30d",
+  "candidate_count": 55,
+  "attempted": 55,
+  "http_requests": 55,
+  "succeeded": 55,
+  "failed": 0,
+  "not_attempted": 0,
+  "rate_limit_remaining": 4933,
+  "duration_seconds": 13,
+  "repos": [
+    {
+      "name": "JuliusBrussee/caveman",
+      "stars": 112534,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "K-Dense-AI/scientific-agent-skills",
+      "stars": 50459,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "NationalSecurityAgency/ghidra",
+      "stars": 88740,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "affaan-m/ECC",
+      "stars": 280386,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "anthropics/claude-plugins-official",
+      "stars": 39083,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "debpalash/VoiceStudio",
+      "stars": 69068,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "lightseekorg/tokenspeed",
+      "stars": 2481,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "mksglu/context-mode",
+      "stars": 29793,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "morluto/rea",
+      "stars": 269927,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "obra/superpowers",
+      "stars": 299887,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "ruvnet/ruflo",
+      "stars": 75118,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "xerj-org/xerj",
+      "stars": 5635,
+      "status": "ok",
+      "last_seen": "2026-10-16"
+    },
+    {
+      "name": "HKUDS/CLI-Anything",
+      "stars": 53082,
+      "status": "ok",
+      "last_seen": "2026-10-15"
+    },
+    {
+      "name": "ifixai-ai/iFixAi",
+      "stars": 28352,
+      "status": "ok",
+      "last_seen": "2026-10-15"
+    },
+    {
+      "name": "ntdevlabs/tiny11builder",
+      "stars": 20502,
+      "status": "ok",
+      "last_seen": "2026-10-15"
+    },
+    {
+      "name": "nvm-sh/nvm",
+      "stars": 95544,
+      "status": "ok",
+      "last_seen": "2026-10-15"
+    },
+    {
+      "name": "rust-lang/rust",
+      "stars": 120303,
+      "status": "ok",
+      "last_seen": "2026-10-15"
+    },
+    {
+      "name": "vxcontrol/pentagi",
+      "stars": 30473,
+      "status": "ok",
+      "last_seen": "2026-10-15"
+    },
+    {
+      "name": "xtool-org/xtool",
+      "stars": 11597,
+      "status": "ok",
+      "last_seen": "2026-10-15"
+    },
+    {
+      "name": "bilawalsidhu/gods-eye-view",
+      "stars": 56927,
+      "status": "ok",
+      "last_seen": "2026-10-14"
+    },
+    {
+      "name": "cathrynlavery/diagram-design",
+      "stars": 55913,
+      "status": "ok",
+      "last_seen": "2026-10-14"
+    },
+    {
+      "name": "lyogavin/airllm",
+      "stars": 38871,
+      "status": "ok",
+      "last_seen": "2026-10-14"
+    },
+    {
+      "name": "storytold/artcraft",
+      "stars": 29257,
+      "status": "ok",
+      "last_seen": "2026-10-14"
+    },
+    {
+      "name": "vercel-labs/skills",
+      "stars": 35118,
+      "status": "ok",
+      "last_seen": "2026-10-14"
+    },
+    {
+      "name": "Alishahryar1/free-claude-code",
+      "stars": 60801,
+      "status": "ok",
+      "last_seen": "2026-10-13"
+    },
+    {
+      "name": "microsoft/BitNet",
+      "stars": 41171,
+      "status": "ok",
+      "last_seen": "2026-10-13"
+    },
+    {
+      "name": "open-webui/open-webui",
+      "stars": 155825,
+      "status": "ok",
+      "last_seen": "2026-10-13"
+    },
+    {
+      "name": "boykopovar/AnyPS5",
+      "stars": 38672,
+      "status": "ok",
+      "last_seen": "2026-10-12"
+    },
+    {
+      "name": "chrislgarry/Apollo-11",
+      "stars": 75185,
+      "status": "ok",
+      "last_seen": "2026-10-12"
+    },
+    {
+      "name": "pytorch/pytorch",
+      "stars": 104706,
+      "status": "ok",
+      "last_seen": "2026-10-12"
+    },
+    {
+      "name": "anthropics/knowledge-work-plugins",
+      "stars": 29800,
+      "status": "ok",
+      "last_seen": "2026-10-11"
+    },
+    {
+      "name": "flutter/flutter",
+      "stars": 180227,
+      "status": "ok",
+      "last_seen": "2026-10-11"
+    },
+    {
+      "name": "huggingface/transformers",
+      "stars": 167734,
+      "status": "ok",
+      "last_seen": "2026-10-11"
+    },
+    {
+      "name": "hugohe3/ppt-master",
+      "stars": 62435,
+      "status": "ok",
+      "last_seen": "2026-10-11"
+    },
+    {
+      "name": "mattpocock/skills",
+      "stars": 292846,
+      "status": "ok",
+      "last_seen": "2026-10-11"
+    },
+    {
+      "name": "multica-ai/andrej-karpathy-skills",
+      "stars": 220101,
+      "status": "ok",
+      "last_seen": "2026-10-11"
+    },
+    {
+      "name": "tensorflow/tensorflow",
+      "stars": 200984,
+      "status": "ok",
+      "last_seen": "2026-10-11"
+    },
+    {
+      "name": "BerriAI/litellm",
+      "stars": 61338,
+      "status": "ok",
+      "last_seen": "2026-10-10"
+    },
+    {
+      "name": "Robbyant/lingbot-map",
+      "stars": 18104,
+      "status": "ok",
+      "last_seen": "2026-10-10"
+    },
+    {
+      "name": "addyosmani/agent-skills",
+      "stars": 107047,
+      "status": "ok",
+      "last_seen": "2026-10-10"
+    },
+    {
+      "name": "alibaba/open-code-review",
+      "stars": 47383,
+      "status": "ok",
+      "last_seen": "2026-10-10"
+    },
+    {
+      "name": "twostraws/SwiftUI-Agent-Skill",
+      "stars": 6094,
+      "status": "ok",
+      "last_seen": "2026-10-10"
+    },
+    {
+      "name": "EpicGames/raddebugger",
+      "stars": 8561,
+      "status": "ok",
+      "last_seen": "2026-10-09"
+    },
+    {
+      "name": "liquidslr/system-design-notes",
+      "stars": 26498,
+      "status": "ok",
+      "last_seen": "2026-10-09"
+    },
+    {
+      "name": "thedotmack/claude-mem",
+      "stars": 101052,
+      "status": "ok",
+      "last_seen": "2026-10-09"
+    },
+    {
+      "name": "DuarteSantos8/openGym",
+      "stars": 12347,
+      "status": "ok",
+      "last_seen": "2026-10-08"
+    },
+    {
+      "name": "ayghri/i-have-adhd",
+      "stars": 57300,
+      "status": "ok",
+      "last_seen": "2026-10-08"
+    },
+    {
+      "name": "cloudflare/security-audit-skill",
+      "stars": 29913,
+      "status": "ok",
+      "last_seen": "2026-10-08"
+    },
+    {
+      "name": "manaflow-ai/cmux",
+      "stars": 28194,
+      "status": "ok",
+      "last_seen": "2026-10-08"
+    },
+    {
+      "name": "tester-army/e2e",
+      "stars": 10786,
+      "status": "ok",
+      "last_seen": "2026-10-08"
+    },
+    {
+      "name": "trycua/cua",
+      "stars": 29871,
+      "status": "ok",
+      "last_seen": "2026-10-08"
+    },
+    {
+      "name": "deepseek-ai/DeepGEMM",
+      "stars": 8973,
+      "status": "ok",
+      "last_seen": "2026-10-07"
+    },
+    {
+      "name": "earthtojake/text-to-cad",
+      "stars": 20704,
+      "status": "ok",
+      "last_seen": "2026-10-07"
+    },
+    {
+      "name": "msitarzewski/agency-agents",
+      "stars": 160358,
+      "status": "ok",
+      "last_seen": "2026-10-07"
+    },
+    {
+      "name": "pbakaus/impeccable",
+      "stars": 81622,
+      "status": "ok",
+      "last_seen": "2026-10-07"
+    }
+  ]
+}
