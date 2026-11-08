@@ -14,7 +14,7 @@
 <!-- reports:index:start -->
 ## 最新报告
 
-- **日报**：[2026-11-07](reports/daily/2026-11-07.md)
+- **日报**：[2026-11-08](reports/daily/2026-11-08.md)
 - **月报**：[2026-11](reports/monthly/2026-11.md)
 - **年报**：[2026](reports/yearly/2026.md)
 
@@ -22,6 +22,7 @@
 
 ### 日报（最新在前）
 
+- [2026-11-08](reports/daily/2026-11-08.md)
 - [2026-11-07](reports/daily/2026-11-07.md)
 - [2026-11-06](reports/daily/2026-11-06.md)
 - [2026-11-05](reports/daily/2026-11-05.md)
@@ -51,7 +52,6 @@
 - [2026-10-12](reports/daily/2026-10-12.md)
 - [2026-10-11](reports/daily/2026-10-11.md)
 - [2026-10-10](reports/daily/2026-10-10.md)
-- [2026-10-09](reports/daily/2026-10-09.md)
 
 ### 月报（最新在前）
 
