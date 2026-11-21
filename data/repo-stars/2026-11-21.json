@@ -1,0 +1,1007 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-21",
+  "fetched_at": "2026-11-21T03:24:07.972405+00:00",
+  "source": "github-repos-api",
+  "candidate_policy": "official-trending-last-seen-30d",
+  "candidate_count": 165,
+  "attempted": 165,
+  "http_requests": 165,
+  "succeeded": 165,
+  "failed": 0,
+  "not_attempted": 0,
+  "rate_limit_remaining": 4818,
+  "duration_seconds": 38,
+  "repos": [
+    {
+      "name": "HKUDS/CLI-Anything",
+      "stars": 61460,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "Tracer-Cloud/opensre",
+      "stars": 13667,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "XiaoYouChR/Ghost-Downloader-3",
+      "stars": 13805,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "cathrynlavery/diagram-design",
+      "stars": 69343,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "cursor/plugins",
+      "stars": 17878,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "elementalsouls/Claude-BugHunter",
+      "stars": 14456,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "firecrawl/firecrawl",
+      "stars": 205381,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "google-labs-code/stitch-skills",
+      "stars": 11082,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "jingyaogong/minimind",
+      "stars": 67740,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "mjmirza/app-store-compliance",
+      "stars": 2810,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "mvanhorn/last30days-skill",
+      "stars": 71504,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "nginx/nginx",
+      "stars": 32595,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "obra/superpowers",
+      "stars": 322909,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "openvinotoolkit/openvino",
+      "stars": 11809,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "toeverything/AFFiNE",
+      "stars": 75861,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "zhouxiaoka/autoclip",
+      "stars": 12268,
+      "status": "ok",
+      "last_seen": "2026-11-21"
+    },
+    {
+      "name": "DeanChensj/jiangshan-map",
+      "stars": 8595,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "NVIDIA/SkillEvaluator",
+      "stars": 4277,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "affaan-m/ECC",
+      "stars": 307898,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "appwrite/appwrite",
+      "stars": 58454,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "astral-sh/uv",
+      "stars": 92471,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "getarcaneapp/arcane",
+      "stars": 10200,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "google-research/paper-orchestra",
+      "stars": 5463,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "jquery/jquery",
+      "stars": 60108,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "n8n-io/n8n",
+      "stars": 211557,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "nvm-sh/nvm",
+      "stars": 96262,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "punkpeye/awesome-mcp-servers",
+      "stars": 98331,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "solidjs/solid",
+      "stars": 36885,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "sveltejs/svelte",
+      "stars": 89837,
+      "status": "ok",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "name": "Tencent/LoopForge",
+      "stars": 5301,
+      "status": "ok",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "name": "ag-ui-protocol/ag-ui",
+      "stars": 20840,
+      "status": "ok",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "name": "alibaba/open-code-review",
+      "stars": 54826,
+      "status": "ok",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "name": "backnotprop/plannotator",
+      "stars": 13926,
+      "status": "ok",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "name": "dream-num/univer",
+      "stars": 30965,
+      "status": "ok",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "name": "ChromeDevTools/chrome-devtools-mcp",
+      "stars": 58562,
+      "status": "ok",
+      "last_seen": "2026-11-17"
+    },
+    {
+      "name": "kajisho5/ffmpeg-skill",
+      "stars": 8912,
+      "status": "ok",
+      "last_seen": "2026-11-17"
+    },
+    {
+      "name": "tradermonty/claude-trading-skills",
+      "stars": 7451,
+      "status": "ok",
+      "last_seen": "2026-11-17"
+    },
+    {
+      "name": "GoogleChrome/modern-web-guidance-src",
+      "stars": 9557,
+      "status": "ok",
+      "last_seen": "2026-11-16"
+    },
+    {
+      "name": "ggml-org/ggml",
+      "stars": 16135,
+      "status": "ok",
+      "last_seen": "2026-11-16"
+    },
+    {
+      "name": "JuliusBrussee/caveman",
+      "stars": 121807,
+      "status": "ok",
+      "last_seen": "2026-11-15"
+    },
+    {
+      "name": "Likely7/Veyra-NRVideo",
+      "stars": 4771,
+      "status": "ok",
+      "last_seen": "2026-11-15"
+    },
+    {
+      "name": "QwenLM/qwen-code",
+      "stars": 30821,
+      "status": "ok",
+      "last_seen": "2026-11-15"
+    },
+    {
+      "name": "ashhart/TensorFold",
+      "stars": 2360,
+      "status": "ok",
+      "last_seen": "2026-11-15"
+    },
+    {
+      "name": "louislam/uptime-kuma",
+      "stars": 94717,
+      "status": "ok",
+      "last_seen": "2026-11-15"
+    },
+    {
+      "name": "martin-olivier/airgorah",
+      "stars": 6747,
+      "status": "ok",
+      "last_seen": "2026-11-15"
+    },
+    {
+      "name": "we-promise/sure",
+      "stars": 16929,
+      "status": "ok",
+      "last_seen": "2026-11-15"
+    },
+    {
+      "name": "ZhuLinsen/daily_stock_analysis",
+      "stars": 73577,
+      "status": "ok",
+      "last_seen": "2026-11-14"
+    },
+    {
+      "name": "block/buzz",
+      "stars": 37634,
+      "status": "ok",
+      "last_seen": "2026-11-14"
+    },
+    {
+      "name": "openai/codex-security",
+      "stars": 14227,
+      "status": "ok",
+      "last_seen": "2026-11-14"
+    },
+    {
+      "name": "tailscale/tailcat",
+      "stars": 10124,
+      "status": "ok",
+      "last_seen": "2026-11-14"
+    },
+    {
+      "name": "Alishahryar1/free-claude-code",
+      "stars": 72273,
+      "status": "ok",
+      "last_seen": "2026-11-13"
+    },
+    {
+      "name": "CopilotKit/OpenBot",
+      "stars": 13074,
+      "status": "ok",
+      "last_seen": "2026-11-13"
+    },
+    {
+      "name": "addyosmani/agent-skills",
+      "stars": 119415,
+      "status": "ok",
+      "last_seen": "2026-11-13"
+    },
+    {
+      "name": "ggml-org/llama.cpp",
+      "stars": 135877,
+      "status": "ok",
+      "last_seen": "2026-11-13"
+    },
+    {
+      "name": "meta/astryx",
+      "stars": 31391,
+      "status": "ok",
+      "last_seen": "2026-11-13"
+    },
+    {
+      "name": "nodejs/node",
+      "stars": 123809,
+      "status": "ok",
+      "last_seen": "2026-11-13"
+    },
+    {
+      "name": "pookjw/HermesEnabler",
+      "stars": 2308,
+      "status": "ok",
+      "last_seen": "2026-11-13"
+    },
+    {
+      "name": "TheAlgorithms/Java",
+      "stars": 67285,
+      "status": "ok",
+      "last_seen": "2026-11-12"
+    },
+    {
+      "name": "homeassistant-ai/ha-mcp",
+      "stars": 8025,
+      "status": "ok",
+      "last_seen": "2026-11-12"
+    },
+    {
+      "name": "shadcn/improve",
+      "stars": 12095,
+      "status": "ok",
+      "last_seen": "2026-11-12"
+    },
+    {
+      "name": "vercel-labs/agent-browser",
+      "stars": 53097,
+      "status": "ok",
+      "last_seen": "2026-11-12"
+    },
+    {
+      "name": "anthropics/claude-quickstarts",
+      "stars": 21123,
+      "status": "ok",
+      "last_seen": "2026-11-11"
+    },
+    {
+      "name": "anthropics/skills",
+      "stars": 198102,
+      "status": "ok",
+      "last_seen": "2026-11-11"
+    },
+    {
+      "name": "google-deepmind/mujoco",
+      "stars": 18356,
+      "status": "ok",
+      "last_seen": "2026-11-11"
+    },
+    {
+      "name": "mattpocock/skills",
+      "stars": 329036,
+      "status": "ok",
+      "last_seen": "2026-11-11"
+    },
+    {
+      "name": "ranxianglei/billion-context",
+      "stars": 8034,
+      "status": "ok",
+      "last_seen": "2026-11-11"
+    },
+    {
+      "name": "sherlock-project/sherlock",
+      "stars": 115094,
+      "status": "ok",
+      "last_seen": "2026-11-11"
+    },
+    {
+      "name": "tokio-rs/topcoat",
+      "stars": 7279,
+      "status": "ok",
+      "last_seen": "2026-11-11"
+    },
+    {
+      "name": "garrytan/gbrain",
+      "stars": 33350,
+      "status": "ok",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "name": "milind-soni/OpenMausBot",
+      "stars": 26244,
+      "status": "ok",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "name": "ruvnet/RuView",
+      "stars": 104705,
+      "status": "ok",
+      "last_seen": "2026-11-10"
+    },
+    {
+      "name": "dsx-ai-factory/nvke",
+      "stars": 1244,
+      "status": "ok",
+      "last_seen": "2026-11-09"
+    },
+    {
+      "name": "astral-sh/ruff",
+      "stars": 51331,
+      "status": "ok",
+      "last_seen": "2026-11-08"
+    },
+    {
+      "name": "cloudflare/security-audit-skill",
+      "stars": 76341,
+      "status": "ok",
+      "last_seen": "2026-11-08"
+    },
+    {
+      "name": "google/skills",
+      "stars": 24485,
+      "status": "ok",
+      "last_seen": "2026-11-08"
+    },
+    {
+      "name": "mbillow/localthings",
+      "stars": 1400,
+      "status": "ok",
+      "last_seen": "2026-11-08"
+    },
+    {
+      "name": "prometheus/prometheus",
+      "stars": 67744,
+      "status": "ok",
+      "last_seen": "2026-11-08"
+    },
+    {
+      "name": "tailwindlabs/tailwindcss",
+      "stars": 98716,
+      "status": "ok",
+      "last_seen": "2026-11-08"
+    },
+    {
+      "name": "zed-industries/zed",
+      "stars": 95440,
+      "status": "ok",
+      "last_seen": "2026-11-08"
+    },
+    {
+      "name": "NVIDIA/auto-ontology",
+      "stars": 14070,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "angular/angular",
+      "stars": 101471,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "etcd-io/etcd",
+      "stars": 52645,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "microsoft/vscode",
+      "stars": 195691,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "mpv-player/mpv",
+      "stars": 38229,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "nushell/nushell",
+      "stars": 41049,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "openssl/openssl",
+      "stars": 31498,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "rails/rails",
+      "stars": 59079,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "react/react",
+      "stars": 252837,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "rust-lang/rust",
+      "stars": 122314,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "symfony/symfony",
+      "stars": 31457,
+      "status": "ok",
+      "last_seen": "2026-11-07"
+    },
+    {
+      "name": "ConardLi/garden-skills",
+      "stars": 15562,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "D4Vinci/Scrapling",
+      "stars": 104676,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "JiaFeiMiao-K-Cat/DiscImageStudio",
+      "stars": 10404,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "Usagi-org/ai-goofish-monitor",
+      "stars": 20303,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "floci-io/floci",
+      "stars": 32005,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "garrytan/gstack",
+      "stars": 142225,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "max-sixty/worktrunk",
+      "stars": 12675,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "microsoft/VibeVoice",
+      "stars": 57395,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "scenario-labs/skills",
+      "stars": 3946,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "vercel-labs/agent-desktop",
+      "stars": 25789,
+      "status": "ok",
+      "last_seen": "2026-11-06"
+    },
+    {
+      "name": "FareedKhan-dev/kimi-k3-in-c",
+      "stars": 12508,
+      "status": "ok",
+      "last_seen": "2026-11-05"
+    },
+    {
+      "name": "MichaelCade/90DaysOfDevOps",
+      "stars": 30932,
+      "status": "ok",
+      "last_seen": "2026-11-05"
+    },
+    {
+      "name": "The-PR-Agent/pr-agent",
+      "stars": 16501,
+      "status": "ok",
+      "last_seen": "2026-11-05"
+    },
+    {
+      "name": "Thysrael/Horizon",
+      "stars": 14868,
+      "status": "ok",
+      "last_seen": "2026-11-05"
+    },
+    {
+      "name": "github/spec-kit",
+      "stars": 150837,
+      "status": "ok",
+      "last_seen": "2026-11-05"
+    },
+    {
+      "name": "harry0703/MoneyPrinterTurbo",
+      "stars": 144845,
+      "status": "ok",
+      "last_seen": "2026-11-05"
+    },
+    {
+      "name": "thedotmack/claude-mem",
+      "stars": 118676,
+      "status": "ok",
+      "last_seen": "2026-11-05"
+    },
+    {
+      "name": "Donchitos/Claude-Code-Game-Studios",
+      "stars": 40406,
+      "status": "ok",
+      "last_seen": "2026-11-04"
+    },
+    {
+      "name": "JustVugg/colibri",
+      "stars": 52500,
+      "status": "ok",
+      "last_seen": "2026-11-04"
+    },
+    {
+      "name": "anomalyco/hex",
+      "stars": 7728,
+      "status": "ok",
+      "last_seen": "2026-11-04"
+    },
+    {
+      "name": "p-e-w/heretic",
+      "stars": 42373,
+      "status": "ok",
+      "last_seen": "2026-11-04"
+    },
+    {
+      "name": "shiyu-coder/Kronos",
+      "stars": 48036,
+      "status": "ok",
+      "last_seen": "2026-11-04"
+    },
+    {
+      "name": "spotify/portal-ai-plugins",
+      "stars": 3303,
+      "status": "ok",
+      "last_seen": "2026-11-04"
+    },
+    {
+      "name": "FlashML-org/FreeToken",
+      "stars": 17450,
+      "status": "ok",
+      "last_seen": "2026-11-03"
+    },
+    {
+      "name": "hyprwm/Hyprland",
+      "stars": 40729,
+      "status": "ok",
+      "last_seen": "2026-11-03"
+    },
+    {
+      "name": "karpathy/nanochat",
+      "stars": 60744,
+      "status": "ok",
+      "last_seen": "2026-11-03"
+    },
+    {
+      "name": "kornia/kornia",
+      "stars": 12402,
+      "status": "ok",
+      "last_seen": "2026-11-03"
+    },
+    {
+      "name": "paperclipai/paperclip",
+      "stars": 115516,
+      "status": "ok",
+      "last_seen": "2026-11-03"
+    },
+    {
+      "name": "pingdotgg/t3code",
+      "stars": 68018,
+      "status": "ok",
+      "last_seen": "2026-11-03"
+    },
+    {
+      "name": "Renhuai123/ziwei-doushu",
+      "stars": 19013,
+      "status": "ok",
+      "last_seen": "2026-11-02"
+    },
+    {
+      "name": "beenuar/AiSOC",
+      "stars": 7133,
+      "status": "ok",
+      "last_seen": "2026-11-02"
+    },
+    {
+      "name": "cjpais/Handy",
+      "stars": 39445,
+      "status": "ok",
+      "last_seen": "2026-11-02"
+    },
+    {
+      "name": "lightpanda-io/browser",
+      "stars": 42274,
+      "status": "ok",
+      "last_seen": "2026-11-02"
+    },
+    {
+      "name": "patchy631/ai-engineering-hub",
+      "stars": 42041,
+      "status": "ok",
+      "last_seen": "2026-11-02"
+    },
+    {
+      "name": "public-apis/public-apis",
+      "stars": 500504,
+      "status": "ok",
+      "last_seen": "2026-11-02"
+    },
+    {
+      "name": "togg53192-cmd/jailbreaks",
+      "stars": 18736,
+      "status": "ok",
+      "last_seen": "2026-11-02"
+    },
+    {
+      "name": "HKUDS/DeepTutor",
+      "stars": 61134,
+      "status": "ok",
+      "last_seen": "2026-11-01"
+    },
+    {
+      "name": "Orkas-AI/Orkas",
+      "stars": 9487,
+      "status": "ok",
+      "last_seen": "2026-11-01"
+    },
+    {
+      "name": "THU-MAIC/OpenMAIC",
+      "stars": 44037,
+      "status": "ok",
+      "last_seen": "2026-11-01"
+    },
+    {
+      "name": "bregman-arie/devops-exercises",
+      "stars": 86904,
+      "status": "ok",
+      "last_seen": "2026-11-01"
+    },
+    {
+      "name": "pbakaus/impeccable",
+      "stars": 114112,
+      "status": "ok",
+      "last_seen": "2026-11-01"
+    },
+    {
+      "name": "vorssaint/vorssaint-utils",
+      "stars": 35507,
+      "status": "ok",
+      "last_seen": "2026-11-01"
+    },
+    {
+      "name": "JetBrains/thinkrail",
+      "stars": 8377,
+      "status": "ok",
+      "last_seen": "2026-10-31"
+    },
+    {
+      "name": "expo/skills",
+      "stars": 4197,
+      "status": "ok",
+      "last_seen": "2026-10-31"
+    },
+    {
+      "name": "macro-inc/macro",
+      "stars": 6418,
+      "status": "ok",
+      "last_seen": "2026-10-31"
+    },
+    {
+      "name": "elayadesign/ai-design-skills",
+      "stars": 16211,
+      "status": "ok",
+      "last_seen": "2026-10-30"
+    },
+    {
+      "name": "nightly-labs/openbot",
+      "stars": 9488,
+      "status": "ok",
+      "last_seen": "2026-10-30"
+    },
+    {
+      "name": "Nutlope/hallmark",
+      "stars": 58657,
+      "status": "ok",
+      "last_seen": "2026-10-29"
+    },
+    {
+      "name": "hmjz100/LinkSwift",
+      "stars": 40710,
+      "status": "ok",
+      "last_seen": "2026-10-29"
+    },
+    {
+      "name": "makecindy/cindy",
+      "stars": 10335,
+      "status": "ok",
+      "last_seen": "2026-10-29"
+    },
+    {
+      "name": "xiaolai/the-craft-of-selfteaching",
+      "stars": 19398,
+      "status": "ok",
+      "last_seen": "2026-10-29"
+    },
+    {
+      "name": "gitroomhq/postiz-app",
+      "stars": 42064,
+      "status": "ok",
+      "last_seen": "2026-10-28"
+    },
+    {
+      "name": "NVIDIA/SkillSpector",
+      "stars": 27081,
+      "status": "ok",
+      "last_seen": "2026-10-27"
+    },
+    {
+      "name": "Panniantong/Agent-Reach",
+      "stars": 113591,
+      "status": "ok",
+      "last_seen": "2026-10-27"
+    },
+    {
+      "name": "TauricResearch/TradingAgents",
+      "stars": 123306,
+      "status": "ok",
+      "last_seen": "2026-10-27"
+    },
+    {
+      "name": "alchaincyf/huashu-design",
+      "stars": 29967,
+      "status": "ok",
+      "last_seen": "2026-10-27"
+    },
+    {
+      "name": "debpalash/VoiceStudio",
+      "stars": 115485,
+      "status": "ok",
+      "last_seen": "2026-10-27"
+    },
+    {
+      "name": "multica-ai/andrej-karpathy-skills",
+      "stars": 234773,
+      "status": "ok",
+      "last_seen": "2026-10-27"
+    },
+    {
+      "name": "pollen-robotics/microduck",
+      "stars": 13947,
+      "status": "ok",
+      "last_seen": "2026-10-27"
+    },
+    {
+      "name": "AgriciDaniel/claude-seo",
+      "stars": 31195,
+      "status": "ok",
+      "last_seen": "2026-10-26"
+    },
+    {
+      "name": "coollabsio/coolify",
+      "stars": 66309,
+      "status": "ok",
+      "last_seen": "2026-10-26"
+    },
+    {
+      "name": "NVIDIA/OpenShell",
+      "stars": 21839,
+      "status": "ok",
+      "last_seen": "2026-10-25"
+    },
+    {
+      "name": "aws/agent-toolkit-for-aws",
+      "stars": 3530,
+      "status": "ok",
+      "last_seen": "2026-10-25"
+    },
+    {
+      "name": "google-gemini/gemini-cli",
+      "stars": 108956,
+      "status": "ok",
+      "last_seen": "2026-10-25"
+    },
+    {
+      "name": "jbiaojerry/ebook-treasure-chest",
+      "stars": 24260,
+      "status": "ok",
+      "last_seen": "2026-10-25"
+    },
+    {
+      "name": "luongnv89/claude-howto",
+      "stars": 47476,
+      "status": "ok",
+      "last_seen": "2026-10-25"
+    },
+    {
+      "name": "OpenBMB/VoxCPM",
+      "stars": 42802,
+      "status": "ok",
+      "last_seen": "2026-10-24"
+    },
+    {
+      "name": "SnailSploit/Claude-Red",
+      "stars": 11323,
+      "status": "ok",
+      "last_seen": "2026-10-24"
+    },
+    {
+      "name": "anthropics/knowledge-work-plugins",
+      "stars": 36628,
+      "status": "ok",
+      "last_seen": "2026-10-24"
+    },
+    {
+      "name": "php/php-src",
+      "stars": 41847,
+      "status": "ok",
+      "last_seen": "2026-10-24"
+    },
+    {
+      "name": "DietrichGebert/ponytail",
+      "stars": 195688,
+      "status": "ok",
+      "last_seen": "2026-10-23"
+    },
+    {
+      "name": "Graphify-Labs/graphify",
+      "stars": 151219,
+      "status": "ok",
+      "last_seen": "2026-10-23"
+    },
+    {
+      "name": "Meloong-Git/PCL",
+      "stars": 9776,
+      "status": "ok",
+      "last_seen": "2026-10-23"
+    },
+    {
+      "name": "fastapi/fastapi",
+      "stars": 104985,
+      "status": "ok",
+      "last_seen": "2026-10-23"
+    },
+    {
+      "name": "supabase/supabase",
+      "stars": 115205,
+      "status": "ok",
+      "last_seen": "2026-10-23"
+    }
+  ]
+}
